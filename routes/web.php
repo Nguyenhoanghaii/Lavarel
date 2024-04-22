@@ -7,6 +7,9 @@ use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
+header('Access-Control-Allow-Origin', '*');
+header('Access-Control-Allow-Methods', '*');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +25,21 @@ Route::get('/', [ProductController::class, 'index']);
 Route::get('/comment', [CommentController::class,'index3']);
 Route::get('/user', [UserController::class,'index4']);
 
-Route::get('/product/create',[ProductController::class,'create'] );
-Route::get('/product/create1',[ProductController::class,'create1'] );
+Route::prefix('/product')->group(function () {
+
+    //CURD
+    // C : create // post // ẩn thông tin khi client gửi vể
+    // u : update // put //
+
+    // r : read // get // show thông tin trên url
+    // d : delete //delete
+    Route::post('/create',[ProductController::class,'create'] )->name('product.create');
+    Route::get('/create-product',[ProductController::class,'create1'] );
+
+
+});
+
+
 Route::get('/user/create',[UserController::class,'create'] );
 Route::get('/comment/create',[CommentController::class,'create'] );
 

@@ -15,18 +15,16 @@ class ProductController extends Controller
         dd("index");
     }
 
-    public function create() {
+    public function create(Request $request) {
+        // dd($request->all());
         Product::create([
-            "name" => "product1",
-            "price" => 100.7,
+            "name" => $request->name,
+            "price" => $request->price,
         ]);
     }
     public function create1() {
-        Product::create([
-            "name" => "product2",
-            "price" => 200.7,
-        ]);
+        return view('product.create');
     }
 
-    
+
 }
