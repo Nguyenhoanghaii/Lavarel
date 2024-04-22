@@ -7,23 +7,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function index() {
+        return view('user.create');
+    }
 
-    function index2() {
-        dd("index2");
-    }
-    function index() {
-        dd("index");
-    }
-    function index4() {
-        dd(User::all());
-    }
-    public function create() {
+   
+    public function createUser(Request $request) {
+        // dd($request->all());
         User::create([
-            "name" => "Hai",
-            "email"=>"hoanghaiiduoi@gmail.com",
-            "password"=>"0111111"
+            "email"=>$request->email,
+            "name" => $request->name,
+            "password" => $request->password,
         ]);
     }
-
-    
 }

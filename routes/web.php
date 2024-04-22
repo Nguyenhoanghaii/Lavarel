@@ -39,8 +39,11 @@ Route::prefix('/product')->group(function () {
 
 });
 
+Route::prefix('/user')->group(function(){
+    Route::post('/create',[UserController::class,'createUser'] )->name('user.create');
+    Route::get('/create/user',[UserController::class,'index']);
 
-Route::get('/user/create',[UserController::class,'create'] );
+});
 Route::get('/comment/create',[CommentController::class,'create'] );
 
 
