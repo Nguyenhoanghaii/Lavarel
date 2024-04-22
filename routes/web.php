@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
+use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'index']);
+Route::get('/comment', [CommentController::class,'index3']);
+Route::get('/user', [UserController::class,'index4']);
+
+Route::get('/product/create',[ProductController::class,'create'] );
+Route::get('/product/create1',[ProductController::class,'create1'] );
+Route::get('/user/create',[UserController::class,'create'] );
+Route::get('/comment/create',[CommentController::class,'create'] );
+
+
