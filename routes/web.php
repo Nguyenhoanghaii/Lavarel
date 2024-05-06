@@ -22,29 +22,11 @@ header('Access-Control-Allow-Methods', '*');
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/comment', [CommentController::class,'index3']);
-Route::get('/user', [UserController::class,'index4']);
-
-Route::prefix('/product')->group(function () {
-
-    //CURD
-    // C : create // post // ẩn thông tin khi client gửi vể
-    // u : update // put //
-
-    // r : read // get // show thông tin trên url
-    // d : delete //delete
-    Route::post('/create',[ProductController::class,'create'] )->name('product.create');
-    Route::get('/create-product',[ProductController::class,'create1'] );
-
-
-});
-
-Route::prefix('/user')->group(function(){
-    Route::post('/create',[UserController::class,'createUser'] )->name('user.create');
-    Route::get('/create/user',[UserController::class,'index']);
-
-});
-Route::get('/comment/create',[CommentController::class,'create'] );
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::get('/register', [HomeController::class, 'register'])->name('register');
+Route::get('/detail', [HomeController::class, 'detail']);
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 
