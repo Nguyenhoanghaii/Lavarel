@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Comment;
@@ -21,7 +22,7 @@ header('Access-Control-Allow-Methods', '*');
 |
 */
 
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/comment', [CommentController::class,'index3']);
 Route::get('/user', [UserController::class,'index4']);
 
