@@ -31,8 +31,8 @@
                 <div class="pull-right auto-width-right">
                     <ul class="top-details menu-beta l-inline">
                         <li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
-                        <li><a href="#">Đăng kí</a></li>
-                        <li><a href="#">Đăng nhập</a></li>
+                        <li><a href="{{ route('register') }}">Đăng kí</a></li>
+                        <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -41,7 +41,7 @@
         <div class="header-body">
             <div class="container beta-relative">
                 <div class="pull-left">
-                    <a href="index.html" id="logo"><img src="assets/dest/images/logo-cake.png" width="200px"
+                    <a href="{{ route('home') }}" id="logo"><img src="assets/dest/images/logo-cake.png" width="200px"
                             alt=""></a>
                 </div>
                 <div class="pull-right beta-components space-left ov">
