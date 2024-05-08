@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Slide;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     function index() {
-        return view('bread.pages.index');
+        $slides = Slide::all();
+        return view('bread.pages.index', compact('slides'));
     }
 
     function login() {
