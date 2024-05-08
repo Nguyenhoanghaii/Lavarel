@@ -17,8 +17,8 @@
                                     data-oheight="undefined">
                                     <div class="tp-bgimg defaultimg" data-lazyload="undefined" data-bgfit="cover"
                                         data-bgposition="center center" data-bgrepeat="no-repeat" data-lazydone="undefined"
-                                        src="assets/dest/images/thumbs/1.jpg" data-src="assets/dest/images/thumbs/1.jpg"
-                                        style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('assets/dest/images/thumbs/1.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
+                                        src="image/slide/banner1.jpg" data-src="image/slide/banner1.jpg"
+                                        style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('image/slide/banner1.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
                                     </div>
                                 </div>
 
@@ -33,8 +33,8 @@
                                     data-oheight="undefined">
                                     <div class="tp-bgimg defaultimg" data-lazyload="undefined" data-bgfit="cover"
                                         data-bgposition="center center" data-bgrepeat="no-repeat" data-lazydone="undefined"
-                                        src="assets/dest/images/thumbs/1.jpg" data-src="assets/dest/images/thumbs/1.jpg"
-                                        style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('assets/dest/images/thumbs/1.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
+                                        src="image/slide/banner2.jpg" data-src="image/slide/banner2.jpg"
+                                        style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('image/slide/banner2.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
                                     </div>
                                 </div>
 
@@ -48,8 +48,8 @@
                                     data-oheight="undefined">
                                     <div class="tp-bgimg defaultimg" data-lazyload="undefined" data-bgfit="cover"
                                         data-bgposition="center center" data-bgrepeat="no-repeat" data-lazydone="undefined"
-                                        src="assets/dest/images/thumbs/1.jpg" data-src="assets/dest/images/thumbs/1.jpg"
-                                        style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('assets/dest/images/thumbs/1.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
+                                        src="image/slide/banner3.jpg" data-src="image/slide/banner3.jpg"
+                                        style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('image/slide/banner3.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
                                     </div>
                                 </div>
 
@@ -66,9 +66,9 @@
                                     data-oheight="undefined">
                                     <div class="tp-bgimg defaultimg" data-lazyload="undefined" data-bgfit="cover"
                                         data-bgposition="center center" data-bgrepeat="no-repeat"
-                                        data-lazydone="undefined" src="assets/dest/images/thumbs/1.jpg"
-                                        data-src="assets/dest/images/thumbs/1.jpg"
-                                        style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('assets/dest/images/thumbs/1.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
+                                        data-lazydone="undefined" src="image/slide/banner4.jpg"
+                                        data-src="image/slide/banner4.jpg"
+                                        style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('image/slide/banner4.jpg'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
                                     </div>
                                 </div>
 
