@@ -10,9 +10,15 @@ class HomeController extends Controller
 {
     function index() {
         $slides = Slide::all();
-        $products=Product::limit(4)->get();
-        return view('bread.pages.index', compact('slides','products'));
-        
+        $newProducts = Product::where('new', 1)->limit(4)->get()->toArray();
+
+
+        $topProducts = Product::orderBy('unit_price', 'desc')->limit(8)->get()->toArray();
+
+        $top1 = array_slice($topProducts, 0, 4);
+        $top2 = array_slice($topProducts, 4, 7);
+        return view('bread.pages.index', compact('slides', 'newProducts', 'top1', 'top2'));
+
     }
 
     function login() {

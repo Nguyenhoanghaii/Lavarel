@@ -48,7 +48,10 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="row">
-                            @foreach ($products as $product)
+                            @foreach ($newProducts as $product)
+                                @php
+                                    $product = (object) $product;
+                                @endphp
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header" >
@@ -88,7 +91,10 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="row">
-                                @foreach($products as $product)
+                                @foreach($top1 as $product)
+                                @php
+                                    $product = (object) $product;
+                                @endphp
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
@@ -116,7 +122,10 @@
                             </div>
                             <div class="space40">&nbsp;</div>
                             <div class="row">
-                                @foreach ($products as $product)
+                                @foreach ($top2 as $product)
+                                @php
+                                    $product = (object) $product;
+                                @endphp
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
