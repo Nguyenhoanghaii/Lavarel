@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Slide;
+use App\Models\TypeProduct;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,6 +18,8 @@ class HomeController extends Controller
 
         $top1 = array_slice($topProducts, 0, 4);
         $top2 = array_slice($topProducts, 4, 7);
+        $types=TypeProduct::all();
+        
         return view('bread.pages.index', compact('slides', 'newProducts', 'top1', 'top2'));
 
     }

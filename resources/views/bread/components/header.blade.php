@@ -123,9 +123,13 @@
                         <li><a href="{{ route('home') }}">Trang chủ</a></li>
                         <li><a href="#">Sản phẩm</a>
                             <ul class="sub-menu">
-                                <li><a href="product_type.html">Sản phẩm 1</a></li>
-                                <li><a href="product_type.html">Sản phẩm 2</a></li>
-                                <li><a href="product_type.html">Sản phẩm 4</a></li>
+                                @php
+
+                                    $types=App\Models\TypeProduct::all();
+                                @endphp
+                                @foreach ($types as $type)
+                                    <li><a href="product_type.html">{{$type->name}}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li><a href="{{ route('about') }}">Giới thiệu</a></li>
