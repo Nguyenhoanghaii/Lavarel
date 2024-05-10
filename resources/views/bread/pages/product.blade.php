@@ -21,13 +21,13 @@
 
 					<div class="row">
 						<div class="col-sm-4">
-							<img src="assets/dest/images/products/6.jpg" alt="">
+							<img src="{{ asset('/image/product/'.$product->image) }}" alt="">
 						</div>
 						<div class="col-sm-8">
 							<div class="single-item-body">
-								<p class="single-item-title">Sample Woman Top</p>
+								<p class="single-item-title">{{ $product->name }}</p>
 								<p class="single-item-price">
-									<span>$34.55</span>
+									<span>{{ $product->price }}</span>
 								</p>
 							</div>
 
@@ -35,7 +35,7 @@
 							<div class="space20">&nbsp;</div>
 
 							<div class="single-item-desc">
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo ms id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe.</p>
+								<p>{{ $product->description }}</p>
 							</div>
 							<div class="space20">&nbsp;</div>
 

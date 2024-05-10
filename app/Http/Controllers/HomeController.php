@@ -12,7 +12,7 @@ class HomeController extends Controller
         $slides = Slide::all();
         $products=Product::limit(4)->get();
         return view('bread.pages.index', compact('slides','products'));
-        
+
     }
 
     function login() {
@@ -29,5 +29,10 @@ class HomeController extends Controller
 
     function about() {
         return view('bread.pages.about');
+    }
+
+    function detail($id) {
+        $product = Product::find($id);
+        return view('bread.pages.product', compact('product'));
     }
 }
