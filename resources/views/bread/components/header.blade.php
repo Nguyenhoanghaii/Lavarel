@@ -8,13 +8,13 @@
     <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/dest/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/dest/vendors/colorbox/example3/colorbox.css">
-    <link rel="stylesheet" href="assets/dest/rs-plugin/css/settings.css">
-    <link rel="stylesheet" href="assets/dest/rs-plugin/css/responsive.css">
-    <link rel="stylesheet" title="style" href="assets/dest/css/style.css">
-    <link rel="stylesheet" href="assets/dest/css/animate.css">
-    <link rel="stylesheet" title="style" href="assets/dest/css/huong-style.css">
+    <link rel="stylesheet" href="{{ asset('assets/dest/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dest/vendors/colorbox/example3/colorbox.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dest/rs-plugin/css/settings.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dest/rs-plugin/css/responsive.css') }}">
+    <link rel="stylesheet" title="style" href="{{ asset('assets/dest/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dest/css/animate.css') }}">
+    <link rel="stylesheet" title="style" href="{{ asset('assets/dest/css/huong-style.css') }}">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         <div class="header-body">
             <div class="container beta-relative">
                 <div class="pull-left">
-                    <a href="{{ route('home') }}" id="logo"><img src="assets/dest/images/logo-cake.png" width="200px"
+                    <a href="{{ route('home') }}" id="logo"><img src="{{ asset('assets/dest/images/logo-cake.png') }}" width="200px"
                             alt=""></a>
                 </div>
                 <div class="pull-right beta-components space-left ov">
@@ -62,7 +62,7 @@
                                 <div class="cart-item">
                                     <div class="media">
                                         <a class="pull-left" href="#"><img
-                                                src="assets/dest/images/products/cart/1.png" alt=""></a>
+                                                src="{{ asset('assets/dest/images/products/cart/1.png') }}" alt=""></a>
                                         <div class="media-body">
                                             <span class="cart-item-title">Sample Woman Top</span>
                                             <span class="cart-item-options">Size: XS; Colar: Navy</span>
