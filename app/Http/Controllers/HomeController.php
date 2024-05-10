@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Slide;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     function index() {
-        return view('bread.pages.index');
+        $slides = Slide::all();
+        $products=Product::limit(4)->get();
+        return view('bread.pages.index', compact('slides','products'));
+        
     }
 
     function login() {
