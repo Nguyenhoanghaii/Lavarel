@@ -52,10 +52,10 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header" >
-                                            <a href="product.html"><img src="/image/product/{{$product->image}}"
+                                            <a href="/product/{{ $product->id }}"><img src="/image/product/{{$product->image}}"
                                                     alt="" style="width:500px;height:300px"></a>
-                                                    
-                                                   
+
+
                                         </div>
                                         <div class="single-item-body">
                                             <p class="single-item-title">Sample Woman Top</p>
@@ -72,14 +72,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
+
+
                                 @endforeach
                             </div>
-                            
+
                         </div> <!-- .beta-products-list -->
                             <div class="space50">&nbsp;</div>
-                        
+
 
                         <div class="beta-products-list">
                             <h4>Top Products</h4>
@@ -111,8 +111,8 @@
                                     </div>
                                 </div>
                                 @endforeach
-                                
-                                
+
+
                             </div>
                             <div class="space40">&nbsp;</div>
                             <div class="row">
@@ -139,8 +139,8 @@
                                     </div>
                                 </div>
                                 @endforeach
-                                
-                               
+
+
                             </div>
                         </div> <!-- .beta-products-list -->
                     </div>
