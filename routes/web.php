@@ -29,4 +29,11 @@ Route::get('/detail', [HomeController::class, 'detail']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
-
+Route::prefix('/product')->group(function () {
+    // Route::post('/create',[ProductController::class,'create'] )->name('product.create');
+    // Route::post('/edit',[ProductController::class,'submit'] )->name('product.edit');
+    // Route::get('/create',[ProductController::class,'create1'] );
+    // Route::get('/list',[ProductController::class,'getAll'] )->name('product.list');
+    // Route::get('/delete/{id}',[ProductController::class,'delete'] );
+    Route::get('/edit/{id}',[ProductController::class,'edit'] );    
+});

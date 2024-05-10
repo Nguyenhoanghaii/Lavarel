@@ -52,15 +52,15 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header" >
-                                            <a href="/product/{{ $product->id }}"><img src="/image/product/{{$product->image}}"
+                                            <a href="/product/edit/{{$product->id}}"><img src="{{ asset('image/product/'.$product ->image )}}"
                                                     alt="" style="width:500px;height:300px"></a>
 
 
                                         </div>
                                         <div class="single-item-body">
-                                            <p class="single-item-title">Sample Woman Top</p>
+                                            <p class="single-item-title">{{$product->name}}</p>
                                             <p class="single-item-price">
-                                                <span>$34.55</span>
+                                                <span>{{$product->unit_price}}</span>
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
@@ -92,7 +92,7 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="product.html"><img src="image/product/{{ $product ->image }}"
+                                            <a href="/product/edit/{{$product->id}}"><img src="{{ asset('image/product/'.$product ->image )}}"
                                                     alt="" style="width:500px;height:300px"></a>
                                         </div>
                                         <div class="single-item-body">
@@ -120,8 +120,9 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="product.html"><img src="image/product/{{ $product ->image }}"
-                                                    alt="" style="width:500px;height:300px"></a>
+                                            <a href="/product/edit/{{$product->id}}"><img src="{{ asset('image/product/'.$product ->image )}}"
+                                                    alt="" style="width:500px;height:300px"> 
+                                                </a>
                                         </div>
                                         <div class="single-item-body">
                                             <p class="single-item-title">{{$product->name}}</p>

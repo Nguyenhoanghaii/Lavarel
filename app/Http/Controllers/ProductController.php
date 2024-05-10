@@ -25,6 +25,16 @@ class ProductController extends Controller
     public function create1() {
         return view('product.create');
     }
-
+    function edit($id){
+        $product=Product::find($id);
+        if($product){
+            // $product->delete();
+            return view('/bread/pages/product', compact('product'));
+        }
+        else{
+            echo"không có";
+            return redirect()->back();
+        }
+    }
 
 }
