@@ -27,9 +27,10 @@ class ProductController extends Controller
     }
     function edit($id){
         $product=Product::find($id);
+        $relative = $product->type_product->products->take(3);
         if($product){
             // $product->delete();
-            return view('/bread/pages/product', compact('product'));
+            return view('/bread/pages/product', compact('product', 'relative'));
         }
         else{
             echo"không có";
