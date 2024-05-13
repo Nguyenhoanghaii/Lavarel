@@ -15,14 +15,7 @@ class HomeController extends Controller
 
     }
 
-    function login() {
-        return view('bread.pages.login');
-    }
-
-    function register() {
-        return view('bread.pages.signup');
-    }
-
+    
     function contact() {
         return view('bread.pages.contacts');
     }

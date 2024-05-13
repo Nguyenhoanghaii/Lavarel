@@ -23,10 +23,16 @@ header('Access-Control-Allow-Methods', '*');
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/login', [HomeController::class, 'login'])->name('login');
-Route::get('/register', [HomeController::class, 'register'])->name('register');
 Route::get('/product/{id}', [HomeController::class, 'detail']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
+Route::controller(UserController::class)->group(function () {
 
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'postLogin')->name('postLogin');
+    Route::get('/logout', 'postLogout')->name('logout');
+
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'postRegister')->name('postRegister');
+});
