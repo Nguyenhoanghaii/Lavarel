@@ -55,14 +55,15 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/register', 'postRegister')->name('postRegister');
 });
 
-Route::prefix('/admin-tool')->group(function () {
-    Route::controller(AdminController::class)->group(function () {
 
+Route::prefix('/admin')->group(function () {
+    Route::controller(AdminController::class)->group(function () {
         Route::get('/', 'index')->name('home');
-        Route::get('/users', 'users')->name('admin-user');
-        Route::get('/table', 'table')->name('admin-table');
-        Route::get('/login', 'login')->name('admin-login');
-        Route::get('/register', 'register')->name('admin-register');
+
+        Route::get('/users', 'users')->name('user');
+        Route::get('/table', 'table')->name('table');
+        Route::get('/login', 'login')->name('login');
+        Route::get('/register', 'register')->name('register');
     });
     // Route::get('/remove/{id}', 'remove')->name('cart-remove');
-});
+})->name('admin-');

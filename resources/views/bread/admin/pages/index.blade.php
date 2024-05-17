@@ -267,7 +267,7 @@
                                   </td>
                                   <td>
                                     <div class="d-flex">
-                                      <img src="{{ asset('admin/assets/images/faces/face2.jpg') }}" alt="">
+                                      <img src="{{ asset('admin_asset/assets/images/faces/face2.jpg') }}" alt="">
                                       <div>
                                         <h6>Laura Brooks</h6>
                                         <p>Head admin</p>
@@ -302,7 +302,7 @@
                                   </td>
                                   <td>
                                     <div class="d-flex">
-                                      <img src="{{ asset('admin/assets/images/faces/face3.jpg') }}" alt="">
+                                      <img src="{{ asset('admin_asset/assets/images/faces/face3.jpg') }}" alt="">
                                       <div>
                                         <h6>Wayne Murphy</h6>
                                         <p>Head admin</p>
