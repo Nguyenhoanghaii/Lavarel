@@ -56,7 +56,7 @@ Route::controller(UserController::class)->group(function () {
 });
 
 
-Route::prefix('/admin')->group(function () {
+Route::prefix('/admin')->name('admin-')->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/', 'index')->name('home');
 
@@ -66,4 +66,4 @@ Route::prefix('/admin')->group(function () {
         Route::get('/register', 'register')->name('register');
     });
     // Route::get('/remove/{id}', 'remove')->name('cart-remove');
-})->name('admin-');
+});

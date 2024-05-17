@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -24,6 +25,7 @@ class AdminController extends Controller
     }
 
     function users() {
-        return view('bread.admin.user.list-user');
+        $users = User::all();
+        return view('bread.admin.user.list-user', compact('users'));
     }
 }

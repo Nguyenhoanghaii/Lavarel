@@ -8,7 +8,7 @@
       </li>
       <li class="nav-item nav-category">Admin Tool</li>
       <li class="nav-item">
-        <a class="nav-link" href="docs/documentation.html">
+        <a class="nav-link" href="{{ route('admin-user') }}">
           <i class="menu-icon mdi mdi-account-circle-outline"></i>
           <span class="menu-title">Users</span>
         </a>
