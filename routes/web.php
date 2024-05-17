@@ -59,6 +59,7 @@ Route::prefix('/admin-tool')->group(function () {
     Route::controller(AdminController::class)->group(function () {
 
         Route::get('/', 'index')->name('home');
+        Route::get('/users', 'users')->name('admin-user');
         Route::get('/table', 'table')->name('admin-table');
         Route::get('/login', 'login')->name('admin-login');
         Route::get('/register', 'register')->name('admin-register');

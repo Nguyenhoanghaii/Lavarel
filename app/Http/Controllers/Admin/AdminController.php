@@ -22,4 +22,8 @@ class AdminController extends Controller
     function register() {
         return view('bread.admin.pages.user-pages.register');
     }
+
+    function users() {
+        return view('bread.admin.user.list-user');
+    }
 }
