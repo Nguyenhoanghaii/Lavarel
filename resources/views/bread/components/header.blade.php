@@ -61,53 +61,46 @@
 
                     <div class="beta-comp">
                         <div class="cart">
-                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i
+                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng ({{ count(Session::get('cart') ?? [])}}) <i
                                     class="fa fa-chevron-down"></i></div>
                             <div class="beta-dropdown cart-body">
-                                <div class="cart-item">
-                                    <div class="media">
-                                        <a class="pull-left" href="#"><img
-                                                src="{{ asset('assets/dest/images/products/cart/1.png') }}" alt=""></a>
-                                        <div class="media-body">
-                                            <span class="cart-item-title">Sample Woman Top</span>
-                                            <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                            <span class="cart-item-amount">1*<span>$49.50</span></span>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="cart-item">
-                                    <div class="media">
-                                        <a class="pull-left" href="#"><img
-                                                src="assets/dest/images/products/cart/2.png" alt=""></a>
-                                        <div class="media-body">
-                                            <span class="cart-item-title">Sample Woman Top</span>
-                                            <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                            <span class="cart-item-amount">1*<span>$49.50</span></span>
+                                @if(Session::has('cart'))
+                                @php
+                                    $totalPrice = 0;
+                                @endphp
+                                    @foreach (Session::get('cart') as $item)
+                                        @php
+                                            $totalPrice += $item['unit_price'] * $item['quantity'] ?? 0;
+                                        @endphp
+                                        <div class="cart-item">
+                                            <div class="media">
+                                                <a class="pull-left" href="#"><img
+                                                        src="{{ asset('/image/product/' . $item['image']) }}" alt=""></a>
+                                                <div class="media-body" style="width: 70%">
+                                                    <span class="cart-item-title">{{ $item['name'] }}</span>
+                                                    {{-- <span class="cart-item-options">Size: XS; Colar: Navy</span> --}}
+                                                    <span class="cart-item-amount">{{ $item['quantity'] }} *<span>{{ $item['unit_price'] ?? 0 }}</span></span>
+                                                </div>
+                                                <div class="pull-right" >
+                                                    <a href="{{ route('cart-remove', $item['id'] ?? 0) }}" style="color: red;font-weight: bold;">X</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    @endforeach
+                                @else
+                                Trống
+                                @endif
 
-                                <div class="cart-item">
-                                    <div class="media">
-                                        <a class="pull-left" href="#"><img
-                                                src="assets/dest/images/products/cart/3.png" alt=""></a>
-                                        <div class="media-body">
-                                            <span class="cart-item-title">Sample Woman Top</span>
-                                            <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                            <span class="cart-item-amount">1*<span>$49.50</span></span>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="cart-caption">
                                     <div class="cart-total text-right">Tổng tiền: <span
-                                            class="cart-total-value">$34.55</span></div>
+                                            class="cart-total-value">{{  $totalPrice ?? 0 }}</span></div>
                                     <div class="clearfix"></div>
 
                                     <div class="center">
                                         <div class="space10">&nbsp;</div>
-                                        <a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i
+                                        <a href="{{ route('checkout') }}" class="beta-btn primary text-center">Đặt hàng <i
                                                 class="fa fa-chevron-right"></i></a>
                                     </div>
                                 </div>

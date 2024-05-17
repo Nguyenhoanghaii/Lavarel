@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -26,6 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{id}', [HomeController::class, 'detail']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 
 Route::controller(UserController::class)->group(function () {
 
@@ -35,4 +37,9 @@ Route::controller(UserController::class)->group(function () {
 
     Route::get('/register', 'register')->name('register');
     Route::post('/register', 'postRegister')->name('postRegister');
+});
+
+Route::controller(CartController::class)->group(function () {
+    Route::get('/add/{id}', 'add')->name('cart-add');
+    Route::get('/remove/{id}', 'remove')->name('cart-remove');
 });

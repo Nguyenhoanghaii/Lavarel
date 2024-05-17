@@ -28,4 +28,8 @@ class HomeController extends Controller
         $product = Product::find($id);
         return view('bread.pages.product', compact('product'));
     }
+
+    function checkout() {
+        return view('bread.pages.checkout');
+    }
 }
