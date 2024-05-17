@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
@@ -42,4 +43,25 @@ Route::controller(UserController::class)->group(function () {
 Route::controller(CartController::class)->group(function () {
     Route::get('/add/{id}', 'add')->name('cart-add');
     Route::get('/remove/{id}', 'remove')->name('cart-remove');
+});
+
+Route::controller(UserController::class)->group(function () {
+
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'postLogin')->name('postLogin');
+    Route::get('/logout', 'postLogout')->name('logout');
+
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'postRegister')->name('postRegister');
+});
+
+Route::prefix('/admin-tool')->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+
+        Route::get('/', 'index')->name('home');
+        Route::get('/table', 'table')->name('admin-table');
+        Route::get('/login', 'login')->name('admin-login');
+        Route::get('/register', 'register')->name('admin-register');
+    });
+    // Route::get('/remove/{id}', 'remove')->name('cart-remove');
 });
