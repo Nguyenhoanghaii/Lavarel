@@ -61,6 +61,7 @@ Route::prefix('/admin')->name('admin-')->group(function () {
         Route::get('/', 'index')->name('home');
 
         Route::get('/users', 'users')->name('user');
+        Route::get('/products', 'products')->name('product');
         Route::get('/table', 'table')->name('table');
         Route::get('/login', 'login')->name('login');
         Route::get('/register', 'register')->name('register');

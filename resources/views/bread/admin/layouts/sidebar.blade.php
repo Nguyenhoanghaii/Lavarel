@@ -13,6 +13,12 @@
           <span class="menu-title">Users</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin-product') }}">
+          <i class="menu-icon mdi mdi-reproduction"></i>
+          <span class="menu-title">Products</span>
+        </a>
+      </li>
       <li class="nav-item nav-category">UI Elements</li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
