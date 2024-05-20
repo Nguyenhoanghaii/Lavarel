@@ -42,6 +42,15 @@
               </tbody>
             </table>
           </div>
+          <nav aria-label="Page navigation example" class="mt-3 d-flex justify-content-end">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="?page={{ $products->currentPage() - 1 }}">Previous</a></li>
+                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                    <li class="page-item {{ $products->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="?page={{ $i }}"> {{ $i }}</a></li>
+                @endfor
+                <li class="page-item"><a class="page-link" href="?page={{ $products->currentPage() + 1 }}">Next</a></li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

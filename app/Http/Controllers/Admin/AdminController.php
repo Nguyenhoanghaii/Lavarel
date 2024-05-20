@@ -31,7 +31,7 @@ class AdminController extends Controller
     }
 
     function products() {
-        $products = Product::all();
+        $products = Product::paginate(15);
         return view('bread.admin.pages.list-product', compact('products'));
     }
 }
