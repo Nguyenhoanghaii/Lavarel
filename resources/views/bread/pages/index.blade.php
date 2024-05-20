@@ -48,19 +48,17 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="row">
-                            @foreach ($products as $product)
+                                @foreach($products as $product)
                                 <div class="col-sm-3">
                                     <div class="single-item">
-                                        <div class="single-item-header" >
-                                            <a href="/product/{{ $product->id }}"><img src="/image/product/{{$product->image}}"
+                                        <div class="single-item-header">
+                                            <a href="/product/{{ $product->id }}"><img src="image/product/{{ $product ->image }}"
                                                     alt="" style="width:500px;height:300px"></a>
-
-
                                         </div>
                                         <div class="single-item-body">
-                                            <p class="single-item-title">Sample Woman Top</p>
+                                            <p class="single-item-title">{{$product->name}}</p>
                                             <p class="single-item-price">
-                                                <span>$34.55</span>
+                                                <span>{{$product->unit_price}}</span>
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
@@ -72,8 +70,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 @endforeach
                             </div>
 
@@ -92,7 +88,7 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="product.html"><img src="image/product/{{ $product ->image }}"
+                                            <a href="/product/{{ $product->id }}"><img src="image/product/{{ $product ->image }}"
                                                     alt="" style="width:500px;height:300px"></a>
                                         </div>
                                         <div class="single-item-body">
@@ -120,7 +116,7 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="product.html"><img src="image/product/{{ $product ->image }}"
+                                            <a href="/product/{{ $product->id }}"><img src="image/product/{{ $product ->image }}"
                                                     alt="" style="width:500px;height:300px"></a>
                                         </div>
                                         <div class="single-item-body">
