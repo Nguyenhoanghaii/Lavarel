@@ -38,6 +38,12 @@ class CartController extends Controller
             unset($cart[$id]);
         }
         $request->session()->put('cart',$cart);
+       
+        return redirect()->back();
+    }
+    function removeAll(Request $request) {
+
+        $request->session()->forget('cart');
         return redirect()->back();
     }
 }

@@ -43,6 +43,7 @@ Route::controller(UserController::class)->group(function () {
 Route::controller(CartController::class)->group(function () {
     Route::get('/add/{id}', 'add')->name('cart-add');
     Route::get('/remove/{id}', 'remove')->name('cart-remove');
+    Route::get('/remove-all', 'removeAll')->name('cart-remove-all');
 });
 
 Route::controller(UserController::class)->group(function () {
