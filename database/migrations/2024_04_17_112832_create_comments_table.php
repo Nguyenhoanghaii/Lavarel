@@ -12,12 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id(); 
-            $table->text('content');
-            $table->unsignedInteger('product_id');
-            $table->timestamps();
-        });
+        // Schema::create('comments', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->text('content');
+        //     $table->unsignedInteger('product_id');
+        //     $table->timestamps();
+        // });
     }
 
     /**

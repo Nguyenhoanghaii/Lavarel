@@ -13,11 +13,12 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-	
+
 	<div class="container">
 		<div id="content">
-			
-			<form action="#" method="post" class="beta-form-checkout">
+
+			<form action="{{ route('cart-checkout') }}" method="post" class="beta-form-checkout">
+                @csrf
 				<div class="row">
 					<div class="col-sm-6">
 						<h4>Đặt hàng</h4>
@@ -25,34 +26,34 @@
 
 						<div class="form-block">
 							<label for="name">Họ tên*</label>
-							<input type="text" id="name" placeholder="Họ tên" required>
+							<input type="text" id="name" name="name" placeholder="Họ tên" required>
 						</div>
 						<div class="form-block">
 							<label>Giới tính </label>
-							<input id="gender" type="radio" class="input-radio" name="gender" value="nam" checked="checked" style="width: 10%"><span style="margin-right: 10%">Nam</span>
-							<input id="gender" type="radio" class="input-radio" name="gender" value="nữ" style="width: 10%"><span>Nữ</span>
-										
+							<input id="gender" type="radio" class="input-radio" name="gender" value="1" checked="checked" style="width: 10%"><span style="margin-right: 10%">Nam</span>
+							<input id="gender" type="radio" class="input-radio" name="gender" value="0" style="width: 10%"><span>Nữ</span>
+
 						</div>
 
 						<div class="form-block">
 							<label for="email">Email*</label>
-							<input type="email" id="email" required placeholder="expample@gmail.com">
+							<input type="email" id="email" name="email" required placeholder="expample@gmail.com">
 						</div>
 
 						<div class="form-block">
 							<label for="adress">Địa chỉ*</label>
-							<input type="text" id="adress" placeholder="Street Address" required>
+							<input type="text" id="adress" name="address" placeholder="Street Address" required>
 						</div>
-						
+
 
 						<div class="form-block">
 							<label for="phone">Điện thoại*</label>
-							<input type="text" id="phone" required>
+							<input type="text" id="phone" name="phone" required>
 						</div>
-						
+
 						<div class="form-block">
 							<label for="notes">Ghi chú</label>
-							<textarea id="notes"></textarea>
+							<textarea id="notes" name="note" ></textarea>
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -90,7 +91,7 @@
 								</div>
 							</div>
 							<div class="your-order-head"><h5>Hình thức thanh toán</h5></div>
-							
+
 							<div class="your-order-body">
 								<ul class="payment_methods methods">
 									<li class="payment_method_bacs">
@@ -98,7 +99,7 @@
 										<label for="payment_method_bacs">Thanh toán khi nhận hàng </label>
 										<div class="payment_box payment_method_bacs" style="display: block;">
 											Cửa hàng sẽ gửi hàng đến địa chỉ của bạn, bạn xem hàng rồi thanh toán tiền cho nhân viên giao hàng
-										</div>						
+										</div>
 									</li>
 
 									<li class="payment_method_cheque">
@@ -109,13 +110,17 @@
 											<br>- Số tài khoản: 123 456 789
 											<br>- Chủ TK: Nguyễn A
 											<br>- Ngân hàng ACB, Chi nhánh TPHCM
-										</div>						
+										</div>
 									</li>
-									
+
 								</ul>
 							</div>
 
-							<div class="text-center"><a class="beta-btn primary" href="#">Đặt hàng <i class="fa fa-chevron-right"></i></a></div>
+							<div class="text-center">
+                                <Button class="beta-btn primary" type="submit">Đặt hàng <i class="fa fa-chevron-right"></i></Button>
+                                {{-- <a class="beta-btn primary" href="#"> --}}
+                                </a>
+                            </div>
 						</div> <!-- .your-order -->
 					</div>
 				</div>
@@ -137,14 +142,14 @@
 				$(this).parents('li').addClass('parent-active');
             }
         });
-    });   
+    });
 
 
 </script>
 <script>
 	 jQuery(document).ready(function($) {
                 'use strict';
-				
+
 // color box
 
 //color

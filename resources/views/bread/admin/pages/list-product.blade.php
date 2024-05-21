@@ -32,7 +32,7 @@
                   <td> {{ $product->description }} </td>
                   <td> {{ $product->unit_price }} </td>
                   <td> {{ $product->promotion_price }} </td>
-                  <td> {{ asset('image/product/' . $product->image) }} </td>
+                  <td> <img src="{{ asset('image/product/' . $product->image) }}" alt=""> </td>
                   <td>
                     <button class="btn btn-primary"> EDIT </button>
                     <button class="btn btn-danger"> DELETE </button>
