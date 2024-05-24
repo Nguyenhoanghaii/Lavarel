@@ -9,7 +9,16 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     function index() {
-        return view('bread.pages.index');
+        $product=Product::limit(4)->get();
+       
+        return view('bread.pages.index',compact('product'));
+
+    }
+    function detail($id) {
+        $product=Product::find($id);
+        
+        
+        return view('bread.pages.product',compact('product'));
 
     }
 

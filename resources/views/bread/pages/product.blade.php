@@ -21,14 +21,14 @@
 
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="{{asset('image/product/'.$detailProduct->image)}}" alt=""
+                            <img src="{{asset('image/product/'.$product->image)}}" alt=""
                                 style="width:300px;height:300px">
                         </div>
                         <div class="col-sm-8">
                             <div class="single-item-body">
-                                <p class="single-item-title">{{ $detailProduct->name }}</p>
+                                <p class="single-item-title">{{ $product->name }}</p>
                                 <p class="single-item-price">
-                                    <span>{{ $detailProduct->unit_price }}</span>
+                                    <span>{{ $product->unit_price }}</span>
                                 </p>
                             </div>
 

@@ -50,8 +50,7 @@
                     <h4 class="widget-title">Newsletter Subscribe</h4>
                     <form action="#" method="post">
                         <input type="email" name="your_email">
-                        <button class="pull-right" type="submit">Subscribe <i
-                                class="fa fa-chevron-right"></i></button>
+                        <button class="pull-right" type="submit">Subscribe <i class="fa fa-chevron-right"></i></button>
                     </form>
                 </div>
             </div>
@@ -73,20 +72,20 @@
 
 
 <!-- include js files -->
-<script src="assets/dest/js/jquery.js"></script>
-<script src="assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
+
+<script src="{{ asset('assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js') }}"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="assets/dest/vendors/bxslider/jquery.bxslider.min.js"></script>
-<script src="assets/dest/vendors/colorbox/jquery.colorbox-min.js"></script>
-<script src="assets/dest/vendors/animo/Animo.js"></script>
-<script src="assets/dest/vendors/dug/dug.js"></script>
-<script src="assets/dest/js/scripts.min.js"></script>
-<script src="assets/dest/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="assets/dest/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="assets/dest/js/waypoints.min.js"></script>
-<script src="assets/dest/js/wow.min.js"></script>
+<script src="{{ asset('assets/dest/vendors/bxslider/jquery.bxslider.min.js') }}"></script>
+<script src="{{ asset('assets/dest/vendors/colorbox/jquery.colorbox-min.js') }}"></script>
+<script src="{{ asset('assets/dest/vendors/animo/Animo.js') }}"></script>
+<script src="{{ asset('assets/dest/vendors/dug/dug.js') }}"></script>
+<script src="{{ asset('assets/dest/js/scripts.min.js') }}"></script>
+<script src="{{ asset('assets/dest/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('assets/dest/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('assets/dest/js/waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/dest/js/wow.min.js') }}"></script>
 <!--customjs-->
-<script src="assets/dest/js/custom2.js"></script>
+<script src="{{ asset('assets/dest/js/custom2.js') }}"></script>
 <script>
     $(document).ready(function($) {
         $(window).scroll(function() {

@@ -38,7 +38,7 @@
             <div class="main-content">
                 <div class="space60">&nbsp;</div>
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="display: flex;">
                         <div class="beta-products-list">
                             <h4>New Products</h4>
                             <div class="beta-products-details">
@@ -46,18 +46,19 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-3">
+                                @foreach ($product as $item)
+                                    <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header" >
-                                            <a href="product.html"><img src="/image/product/img.png"
+                                            <a href="/detail/{{$item->id}}"><img src="/image/product/{{$item->image}}"
                                                     alt="" style="width:500px;height:300px"></a>
 
 
                                         </div>
                                         <div class="single-item-body">
-                                            <p class="single-item-title">Name o day</p>
+                                            <p class="single-item-title">{{$item->name}}</p>
                                             <p class="single-item-price">
-                                                <span>Gia o day</span>
+                                                <span>{{$item->unit_price}}</span>
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
@@ -69,6 +70,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
+                                
                             </div>
 
                         </div> <!-- .beta-products-list -->
