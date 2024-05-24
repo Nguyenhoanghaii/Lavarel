@@ -52,7 +52,7 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header" >
-                                            <a href="/product/{{ $product->id }}"><img src="/image/product/{{$product->image}}"
+                                            <a href="/productDetail"><img src="/image/product/{{$product->image}}"
                                                     alt="" style="width:500px;height:300px"></a>
 
 
@@ -64,7 +64,7 @@
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" href="shopping_cart.html"><i
+                                            <a class="add-to-cart pull-left" href="/add/{{ $product->id }}"><i
                                                     class="fa fa-shopping-cart"></i></a>
                                             <a class="beta-btn primary" href="product.html">Details <i
                                                     class="fa fa-chevron-right"></i></a>

@@ -23,7 +23,7 @@ header('Access-Control-Allow-Methods', '*');
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/product/{id}', [HomeController::class, 'detail']);
+Route::get('/productDetail/{id}', [HomeController::class, 'detail']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
@@ -35,4 +35,9 @@ Route::controller(UserController::class)->group(function () {
 
     Route::get('/register', 'register')->name('register');
     Route::post('/register', 'postRegister')->name('postRegister');
+});
+Route::controller(ProductController::class)->group(function () {
+
+    Route::get('/add/{id}', 'add')->name('addCart');
+    
 });
