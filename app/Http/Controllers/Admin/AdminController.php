@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,5 +34,10 @@ class AdminController extends Controller
     function products() {
         $products = Product::paginate(15);
         return view('bread.admin.pages.list-product', compact('products'));
+    }
+
+    function orders() {
+        $orders = Order::paginate(15);
+        return view('bread.admin.pages.list-order', compact('orders'));
     }
 }
