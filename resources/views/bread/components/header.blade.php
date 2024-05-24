@@ -61,11 +61,16 @@
 
                     <div class="beta-comp">
                         <div class="cart">
-                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng {{('Quantity')}} <i
+                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng ({{ count(Session::get('cart') ?? [])}}) <i
                                     class="fa fa-chevron-down"></i></div>
                             <div class="beta-dropdown cart-body">
+                                @php
+                                    $total=0;
+                                @endphp
                                 @foreach (Session::get('cart', []) as $item)
-
+                                    @php
+                                        $total += $item['unit_price'] * $item['quantity'] ?? 0;
+                                    @endphp
                                     <div class="cart-item">
                                     <div class="media">
                                         <a class="pull-left" href="#"><img
@@ -82,7 +87,7 @@
 
                                 <div class="cart-caption">
                                     <div class="cart-total text-right">Tổng tiền: <span
-                                            class="cart-total-value">$34.55</span></div>
+                                            class="cart-total-value"> {{$total[$item] ?? 0}}</span></div>
                                     <div class="clearfix"></div>
 
                                     <div class="center">
