@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Comment;
@@ -45,8 +46,14 @@ Route::controller(CartController::class)->group(function () {
     Route::get('/remove/{id}', 'remove')->name('cart-remove');
     Route::get('/remove-all', 'removeAll')->name('cart-remove-all');
 
-    Route::post('/checkout', 'checkout')->name('cart-checkout');;
 });
+
+
+Route::controller(OrderController::class)->prefix('order')->group(function () {
+    Route::post('/create', 'create')->name('cart-checkout');
+});
+
+
 
 Route::controller(UserController::class)->group(function () {
 
