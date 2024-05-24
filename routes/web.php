@@ -25,7 +25,6 @@ header('Access-Control-Allow-Methods', '*');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/register', [HomeController::class, 'register'])->name('register');
-Route::get('/detail/{id}', [ProductController::class, 'detail']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 

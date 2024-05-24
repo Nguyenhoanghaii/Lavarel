@@ -9,10 +9,8 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     function index() {
-        $slides = Slide::all();
-        $products=Product::limit(4)->get();
-        return view('bread.pages.index', compact('slides','products'));
-        
+        return view('bread.pages.index');
+
     }
 
     function login() {
@@ -30,5 +28,5 @@ class HomeController extends Controller
     function about() {
         return view('bread.pages.about');
     }
-    
+
 }
