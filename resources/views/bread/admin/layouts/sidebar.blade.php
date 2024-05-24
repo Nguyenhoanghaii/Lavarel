@@ -6,7 +6,7 @@
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
-      <li class="nav-item">Admin Tool</li>
+      <li class="nav-item nav-category">Admin Tool</li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin-user') }}">
           <i class="menu-icon mdi mdi-account-circle-outline"></i>
