@@ -63,6 +63,7 @@
 								<div class="your-order-item">
 									<div>
 										@if(Session::has('cart'))
+                                        <input type="hidden" value="{{ json_encode(Session::get('cart'), JSON_UNESCAPED_UNICODE) }}" name='cart'>
 											@php
 												$totalPrice = 0;
 											@endphp
