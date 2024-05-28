@@ -96,11 +96,11 @@
                         <h4>Related Products</h4>
 
                         <div class="row">
-                            {{-- @foreach ($bestSeller as $item)
+                            @foreach ($bestSeller as $item)
                                     <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header" >
-                                            <a href="/detail/{{$item->id}}"><img src="/image/products/{{$item->image}}"
+                                            <a href="/detail/{{$item->id}}"><img src="{{asset('image/product/'.$item->image)}}"
                                                     alt="" style="width:500px;height:300px"></a>
 
 
@@ -120,7 +120,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach --}}
+                                @endforeach
                             
                         </div>
                     </div> <!-- .beta-products-list -->

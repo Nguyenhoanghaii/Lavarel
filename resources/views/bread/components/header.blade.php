@@ -57,27 +57,39 @@
 
                     <div class="beta-comp">
                         <div class="cart">
-                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i
-                                    class="fa fa-chevron-down"></i></div>
+                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng
+                                ({{ Session::get('sl') ?? 0 }}) <i class="fa fa-chevron-down"></i></div>
                             <div class="beta-dropdown cart-body">
-                                @foreach ($product as $item)
-                                    <div class="cart-item">
-                                    <div class="media">
-                                        <a class="pull-left" href="#"><img
-                                                src="/image/product/{{$item->image}}" alt=""></a>
-                                        <div class="media-body">
-                                            <span class="cart-item-title">{{$item->name}}</span>
-                                            <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                            <span class="cart-item-amount">1*<span></span>{{$item->unit_price}}</span>
+                                @php
+                                    $tongTien = 0;
+                                @endphp
+
+                                @if (Session::get('cart'))
+                                    @foreach (Session::get('cart') as $item)
+                                        <div class="cart-item">
+                                            <div class="media">
+                                                <a class="pull-left" href="#"><img
+                                                        src="{{ asset('image/product/' . $item->image) }}"
+                                                        alt=""></a>
+                                                <div class="media-body">
+                                                    <span class="cart-item-title">{{ $item->name }}</span>
+                                                    <span class="cart-item-options">Size: XS; Colar: Navy</span>
+                                                    <span class="cart-item-amount"> {{ $item->quantity }}
+                                                        *<span></span>{{ $item->unit_price }}</span>
+                                                </div>
+                                                @php
+                                                    $tongTien += $item->quantity * $item->unit_price;
+                                                @endphp
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                                
+                                    @endforeach
+                                @endif
+
+
 
                                 <div class="cart-caption">
                                     <div class="cart-total text-right">Tổng tiền: <span
-                                            class="cart-total-value">$34.55</span></div>
+                                            class="cart-total-value">{{ $tongTien }}</span></div>
                                     <div class="clearfix"></div>
 
                                     <div class="center">
