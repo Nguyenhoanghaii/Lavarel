@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/dest/vendors/colorbox/example3/colorbox.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dest/rs-plugin/css/settings.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dest/rs-plugin/css/responsive.css') }}">
-    <link rel="stylesheet" title="{{ asset('style" href="assets/dest/css/style.css') }}">
+    <link rel="stylesheet" title="style" href="{{ asset('assets/dest/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dest/css/animate.css') }}">
     <link rel="stylesheet" title="style" href="{{ asset('assets/dest/css/huong-style.css') }}">
     <script src="{{ asset('assets/dest/js/jquery.js') }}"></script>
@@ -60,41 +60,20 @@
                             <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i
                                     class="fa fa-chevron-down"></i></div>
                             <div class="beta-dropdown cart-body">
-                                <div class="cart-item">
+                                @foreach ($product as $item)
+                                    <div class="cart-item">
                                     <div class="media">
                                         <a class="pull-left" href="#"><img
-                                                src="assets/dest/images/products/cart/1.png" alt=""></a>
+                                                src="/image/product/{{$item->image}}" alt=""></a>
                                         <div class="media-body">
-                                            <span class="cart-item-title">Sample Woman Top</span>
+                                            <span class="cart-item-title">{{$item->name}}</span>
                                             <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                            <span class="cart-item-amount">1*<span>$49.50</span></span>
+                                            <span class="cart-item-amount">1*<span></span>{{$item->unit_price}}</span>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="cart-item">
-                                    <div class="media">
-                                        <a class="pull-left" href="#"><img
-                                                src="assets/dest/images/products/cart/2.png" alt=""></a>
-                                        <div class="media-body">
-                                            <span class="cart-item-title">Sample Woman Top</span>
-                                            <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                            <span class="cart-item-amount">1*<span>$49.50</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cart-item">
-                                    <div class="media">
-                                        <a class="pull-left" href="#"><img
-                                                src="assets/dest/images/products/cart/3.png" alt=""></a>
-                                        <div class="media-body">
-                                            <span class="cart-item-title">Sample Woman Top</span>
-                                            <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                            <span class="cart-item-amount">1*<span>$49.50</span></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                
 
                                 <div class="cart-caption">
                                     <div class="cart-total text-right">Tổng tiền: <span
