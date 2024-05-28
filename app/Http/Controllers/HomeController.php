@@ -55,7 +55,16 @@ class HomeController extends Controller
         $request->session()->put('sl', $sl);
         return redirect()->back();
     }
-
+    function remove(Request $request, $id)
+    {
+        $cart =  $request->session()->get('cart', []);
+        $sl =  $request->session()->get('sl', 0);
+        unset($cart[$id]);
+        $sl --;
+        $request->session()->put('cart', $cart);
+        $request->session()->put('sl', $sl);
+        return redirect()->back();
+    }
 
     function flushSession(Request $request)
     {

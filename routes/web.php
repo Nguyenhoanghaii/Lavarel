@@ -30,5 +30,6 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/detail/{id}', [HomeController::class, 'detail']);
 Route::get('/cart/{id}', [HomeController::class, 'cart']);
 Route::get('/flushSession', [HomeController::class, 'flushSession']);
+Route::get('/remove/{id}', [HomeController::class, 'remove']);
 
 

@@ -66,7 +66,7 @@
 
                                 @if (Session::get('cart'))
                                     @foreach (Session::get('cart') as $item)
-                                        <div class="cart-item">
+                                        <div class="cart-item" style="display:flex">
                                             <div class="media">
                                                 <a class="pull-left" href="#"><img
                                                         src="{{ asset('image/product/' . $item->image) }}"
@@ -75,12 +75,15 @@
                                                     <span class="cart-item-title">{{ $item->name }}</span>
                                                     <span class="cart-item-options">Size: XS; Colar: Navy</span>
                                                     <span class="cart-item-amount"> {{ $item->quantity }}
-                                                        *<span></span>{{ $item->unit_price }}</span>
+                                                        *<span></span>{{ $item->unit_price }}</span> 
+                                                    
                                                 </div>
                                                 @php
                                                     $tongTien += $item->quantity * $item->unit_price;
                                                 @endphp
                                             </div>
+                                            
+                                            <a href="/remove/{{$item->id}}" style="color: red">x</a>
                                         </div>
                                     @endforeach
                                 @endif
