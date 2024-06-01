@@ -59,7 +59,14 @@ class HomeController extends Controller
     {
         $cart =  $request->session()->get('cart', []);
         $sl =  $request->session()->get('sl', 0);
-        unset($cart[$id]);
+        // unset($cart[$id]);
+       
+        if ($cart[$id]->quantity > 1) {
+            $cart[$id]->quantity--;
+            
+        } else {
+            unset($cart[$id]);
+        }
         $sl --;
         $request->session()->put('cart', $cart);
         $request->session()->put('sl', $sl);
