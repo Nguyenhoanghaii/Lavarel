@@ -31,9 +31,21 @@
                 </div>
                 <div class="pull-right auto-width-right">
                     <ul class="top-details menu-beta l-inline">
-                        <li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
-                        <li><a href="{{ route('register') }}">Đăng kí</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i>
+                        @if (Auth::check())
+                            {{Auth::user()->full_name;}}
+                            @else
+                            Tai khoan
+                        @endif
+                        </a></li>
+                        @if (Auth::check())
+                            <li><a href="{{ route('logout') }}">Đăng xuat</a></li>
+                        @else
+                            <li><a href="{{ route('user.create') }}">Đăng kí</a></li>
                         <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                        @endif
+                        
+                        
                     </ul>
                 </div>
                 <div class="clearfix"></div>

@@ -24,14 +24,17 @@ header('Access-Control-Allow-Methods', '*');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
-Route::get('/register', [HomeController::class, 'register'])->name('register');
+// Route::get('/register', [HomeController::class, 'register'])->name('register');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/detail/{id}', [HomeController::class, 'detail']);
 Route::get('/cart/{id}', [HomeController::class, 'cart']);
 Route::get('/flushSession', [HomeController::class, 'flushSession']);
 Route::get('/remove/{id}', [HomeController::class, 'remove']);
-Route::get('/register/user', [HomeController::class, 'createUser']);
-Route::post('/register/user', [HomeController::class, 'create']);
+Route::post('/register/user', [UserController::class, 'createUser'])->name('user.create');
+Route::get('/register/user', [UserController::class, 'create']);
+Route::post('/login', [UserController::class, 'authenticate'])->name('loginUser');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
 
 
