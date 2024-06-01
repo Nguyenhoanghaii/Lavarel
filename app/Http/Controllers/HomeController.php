@@ -83,13 +83,14 @@ class HomeController extends Controller
         return view('bread.pages.signup');
     }
 
-    function createUser()
+    function createUser(Request $request)
     {   
-        User::create(){
-        'name',
-        'email',
-        'password',
-        };
+        User::create()[
+            
+        'name'=> $request->product_id,
+        'email'=> $request->product_id,
+        'password'=> $request->product_id,
+        ];
         return view('bread.pages.signup');
     }
 }
