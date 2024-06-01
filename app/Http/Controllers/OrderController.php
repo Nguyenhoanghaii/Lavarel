@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CartDetail;
+use App\Models\OrderDetail;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -24,7 +24,7 @@ class OrderController extends Controller
                     'quantity' => $cart['quantity'],
                 ]);
             };
-            $cartDetail = CartDetail::insert($data);
+            $cartDetail = OrderDetail::insert($data);
         }
         $request->session()->forget('cart');
         return redirect()->route('home');

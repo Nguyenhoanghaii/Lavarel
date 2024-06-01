@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Comment;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,12 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 
+
+Route::get('/test', function() {
+    $order = Order::find(2);
+
+    dd($order->products);
+});
 Route::controller(UserController::class)->group(function () {
 
     Route::get('/login', 'login')->name('login');
