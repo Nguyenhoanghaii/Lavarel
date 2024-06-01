@@ -77,4 +77,19 @@ class HomeController extends Controller
     {
         $request->session()->flush();
     }
+
+    function create()
+    {
+        return view('bread.pages.signup');
+    }
+
+    function createUser()
+    {   
+        User::create(){
+        'name',
+        'email',
+        'password',
+        };
+        return view('bread.pages.signup');
+    }
 }

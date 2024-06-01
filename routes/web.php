@@ -31,5 +31,7 @@ Route::get('/detail/{id}', [HomeController::class, 'detail']);
 Route::get('/cart/{id}', [HomeController::class, 'cart']);
 Route::get('/flushSession', [HomeController::class, 'flushSession']);
 Route::get('/remove/{id}', [HomeController::class, 'remove']);
+Route::get('/register/user', [HomeController::class, 'createUser']);
+Route::post('/register/user', [HomeController::class, 'create']);
 
 
