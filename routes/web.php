@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckAdmin;
 use App\Models\Comment;
 use App\Models\Order;
 use App\Models\User;
@@ -73,7 +74,7 @@ Route::controller(UserController::class)->group(function () {
 });
 
 
-Route::prefix('/admin')->name('admin-')->group(function () {
+Route::prefix('/admin')->middleware([CheckAdmin::class])->name('admin-')->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/', 'index')->name('home');
 
