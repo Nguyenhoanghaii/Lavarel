@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -35,6 +36,9 @@ Route::post('/register/user', [UserController::class, 'createUser'])->name('user
 Route::get('/register/user', [UserController::class, 'create']);
 Route::post('/login', [UserController::class, 'authenticate'])->name('loginUser');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/checkout', [UserController::class, 'checkout'])->name('checkout');
+Route::post('/save', [BillController::class, 'note'])->name('save');
+Route::get('/save', [BillController::class, 'note']);
 
 
 

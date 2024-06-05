@@ -60,6 +60,11 @@ class UserController extends Controller
  
     return redirect('/');
 }
+public function checkout()
+    {
+        return view('bread.pages.checkout');
+    }
+   
 
     // public function createUser(Request $request)
     // {   
