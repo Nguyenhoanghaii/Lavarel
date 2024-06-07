@@ -30,6 +30,12 @@ class HomeController extends Controller
         return view('bread.pages.product', compact('products'));
     }
 
+    function detail(Request $request, $id) {
+        $products = Product::find($id);
+
+        return view('bread.pages.product', compact('products'));
+    }
+
     function login() {
 >>>>>>> Stashed changes
         return view('bread.pages.login');
@@ -67,6 +73,7 @@ class HomeController extends Controller
         return redirect()->back();
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     function remove(Request $request, $id)
     {
         $cart =  $request->session()->get('cart', []);
@@ -90,6 +97,8 @@ class HomeController extends Controller
         $request->session()->flush();
     }
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 }

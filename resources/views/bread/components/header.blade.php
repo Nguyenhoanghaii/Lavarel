@@ -9,6 +9,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="{{ asset('assets/dest/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dest/vendors/colorbox/example3/colorbox.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dest/rs-plugin/css/settings.css') }}">
@@ -18,6 +19,8 @@
     <link rel="stylesheet" title="style" href="{{ asset('assets/dest/css/huong-style.css') }}">
     <script src="{{ asset('assets/dest/js/jquery.js') }}"></script>
 =======
+=======
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="{{asset('assets/dest/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/dest/vendors/colorbox/example3/colorbox.css')}}">
     <link rel="stylesheet" href="{{asset('assets/dest/rs-plugin/css/settings.css')}}">
@@ -25,6 +28,9 @@
     <link rel="stylesheet" title="style" href="{{asset('assets/dest/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/dest/css/animate.css')}}">
     <link rel="stylesheet" title="style" href="{{asset('assets/dest/css/huong-style.css')}}">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 </head>
 
@@ -80,6 +86,7 @@
                     <div class="beta-comp">
                         <div class="cart">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                             <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng
                                 ({{ Session::get('sl') ?? 0 }}) <i class="fa fa-chevron-down"></i></div>
                             <div class="beta-dropdown cart-body">
@@ -114,6 +121,8 @@
 
 
 =======
+=======
+>>>>>>> Stashed changes
                             <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng ({{ Session::get('sl') ?? 0 }}) <i
                                     class="fa fa-chevron-down"></i></div>
                             {{-- <div class="beta-dropdown cart-body">
@@ -131,6 +140,9 @@
                                 </div>
                                 @endforeach
                                 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                                 <div class="cart-caption">
                                     <div class="cart-total text-right">Tổng tiền: <span

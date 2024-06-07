@@ -48,6 +48,7 @@ Route::get('/save', [BillController::class, 'note']);
 =======
 Route::get('/register', [HomeController::class, 'register'])->name('register');
 Route::get('/detail/{id}', [HomeController::class, 'detail']);
+Route::get('/detail/{id}', [HomeController::class, 'detail']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/cart/{id}', [HomeController::class, 'cart']);

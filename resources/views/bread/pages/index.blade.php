@@ -51,7 +51,11 @@
                                     <div class="single-item">
                                         <div class="single-item-header" >
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                             <a href="/detail/{{$item->id}}"><img src="/image/product/{{$item->image}}"
+=======
+                                            <a href="/detail/{{$product->id}}"><img src="/image/product/{{$product->image}}"
+>>>>>>> Stashed changes
 =======
                                             <a href="/detail/{{$product->id}}"><img src="/image/product/{{$product->image}}"
 >>>>>>> Stashed changes
@@ -60,6 +64,7 @@
 
                                         </div>
                                         <div class="single-item-body">
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                                             <p class="single-item-title">{{$item->name}}</p>
                                             <p class="single-item-price">
@@ -70,6 +75,17 @@
                                             <a class="add-to-cart pull-left" href="/cart/{{$item->id}}"><i
                                                     class="fa fa-shopping-cart"></i></a>
                                             <a class="beta-btn primary" href="/detail/{{$item->id}}">Details <i
+=======
+                                            <p class="single-item-title">{{$product->name}}</p>
+                                            <p class="single-item-price">
+                                                <span>{{$product->price}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="single-item-caption">
+                                            <a class="add-to-cart pull-left" href="/cart/{{$product->id}}"><i
+                                                    class="fa fa-shopping-cart"></i></a>
+                                            <a class="beta-btn primary" href="/detail/{{$product->id}}">Details <i
+>>>>>>> Stashed changes
 =======
                                             <p class="single-item-title">{{$product->name}}</p>
                                             <p class="single-item-price">
