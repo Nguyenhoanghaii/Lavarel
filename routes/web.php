@@ -59,6 +59,8 @@ Route::controller(CartController::class)->group(function () {
 
 Route::controller(OrderController::class)->prefix('order')->group(function () {
     Route::post('/create', 'create')->name('cart-checkout');
+    Route::get('/detail/{id}', 'detail')->name('order-detail');
+    Route::delete('/{id}', 'delete')->name('order-delete');
 });
 
 
