@@ -13,6 +13,7 @@ class HomeController extends Controller
         $product = Product::limit(4)->get();
         return view('bread.pages.index', compact('product'));
     }
+<<<<<<< Updated upstream
     function detail($id)
     {
         $product = Product::find($id);
@@ -21,6 +22,16 @@ class HomeController extends Controller
     }
     function login()
     {
+=======
+
+    function detail(Request $request, $id) {
+        $products = Product::find($id);
+
+        return view('bread.pages.product', compact('products'));
+    }
+
+    function login() {
+>>>>>>> Stashed changes
         return view('bread.pages.login');
     }
 
@@ -55,6 +66,7 @@ class HomeController extends Controller
         $request->session()->put('sl', $sl);
         return redirect()->back();
     }
+<<<<<<< Updated upstream
     function remove(Request $request, $id)
     {
         $cart =  $request->session()->get('cart', []);
@@ -78,4 +90,7 @@ class HomeController extends Controller
         $request->session()->flush();
     }
 
+=======
+>>>>>>> Stashed changes
 }
+

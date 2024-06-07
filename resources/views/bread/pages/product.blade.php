@@ -19,6 +19,7 @@
             <div class="row">
                 <div class="col-sm-9">
 
+<<<<<<< Updated upstream
                     <div class="row">
                         <div class="col-sm-4">
                             <img src="{{asset('image/product/'.$product->image)}}" alt=""
@@ -31,14 +32,34 @@
                                     <span>{{ $product->unit_price }}</span>
                                 </p>
                             </div>
+=======
+					<div class="row">
+						<div class="col-sm-4">
+							<img src="/image/product/{{$products->image}}" alt="">
+						</div>
+						<div class="col-sm-8">
+							<div class="single-item-body">
+								<p class="single-item-title">{{$products->name}}</p>
+								<p class="single-item-price">
+									<span>{{$products->price}}</span>
+								</p>
+							</div>
+>>>>>>> Stashed changes
 
                             <div class="clearfix"></div>
                             <div class="space20">&nbsp;</div>
 
+<<<<<<< Updated upstream
                             <div class="single-item-desc">
                                 <p>{{ $product->description }}</p>
                             </div>
                             <div class="space20">&nbsp;</div>
+=======
+							<div class="single-item-desc">
+								<p>{{$products->description}}</p>
+							</div>
+							<div class="space20">&nbsp;</div>
+>>>>>>> Stashed changes
 
                             <p>Options:</p>
                             <div class="single-item-options">

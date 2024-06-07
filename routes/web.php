@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< Updated upstream
 use App\Http\Controllers\BillController;
+=======
+use App\Http\Controllers\CartController;
+>>>>>>> Stashed changes
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -25,6 +29,7 @@ header('Access-Control-Allow-Methods', '*');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
+<<<<<<< Updated upstream
 // Route::get('/register', [HomeController::class, 'register'])->name('register');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
@@ -40,5 +45,12 @@ Route::get('/checkout', [UserController::class, 'checkout'])->name('checkout');
 Route::post('/save', [BillController::class, 'note'])->name('save');
 Route::get('/save', [BillController::class, 'note']);
 
+=======
+Route::get('/register', [HomeController::class, 'register'])->name('register');
+Route::get('/detail/{id}', [HomeController::class, 'detail']);
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/cart/{id}', [HomeController::class, 'cart']);
+>>>>>>> Stashed changes
 
 

@@ -50,12 +50,17 @@
                                     <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header" >
+<<<<<<< Updated upstream
                                             <a href="/detail/{{$item->id}}"><img src="/image/product/{{$item->image}}"
+=======
+                                            <a href="/detail/{{$product->id}}"><img src="/image/product/{{$product->image}}"
+>>>>>>> Stashed changes
                                                     alt="" style="width:500px;height:300px"></a>
 
 
                                         </div>
                                         <div class="single-item-body">
+<<<<<<< Updated upstream
                                             <p class="single-item-title">{{$item->name}}</p>
                                             <p class="single-item-price">
                                                 <span>{{$item->unit_price}}</span>
@@ -65,6 +70,17 @@
                                             <a class="add-to-cart pull-left" href="/cart/{{$item->id}}"><i
                                                     class="fa fa-shopping-cart"></i></a>
                                             <a class="beta-btn primary" href="/detail/{{$item->id}}">Details <i
+=======
+                                            <p class="single-item-title">{{$product->name}}</p>
+                                            <p class="single-item-price">
+                                                <span>{{$product->price}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="single-item-caption">
+                                            <a class="add-to-cart pull-left" href="/cart/{{$product->id}}"><i
+                                                    class="fa fa-shopping-cart"></i></a>
+                                            <a class="beta-btn primary" href="/detail/{{$product->id}}">Details <i
+>>>>>>> Stashed changes
                                                     class="fa fa-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
@@ -77,7 +93,72 @@
                         </div> <!-- .beta-products-list -->
                             <div class="space50">&nbsp;</div>
 
+<<<<<<< Updated upstream
 
+=======
+                        <div class="beta-products-list">
+                            <h4>Top Products</h4>
+                            <div class="beta-products-details">
+                                <p class="pull-left">4380 styles found</p>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                @foreach($products as $product)
+                                <div class="col-sm-3">
+                                    <div class="single-item">
+                                        <div class="single-item-header">
+                                            <a href="product.html"><img src="image/product/{{ $product ->image }}"
+                                                    alt="" style="width:500px;height:300px"></a>
+                                        </div>
+                                        <div class="single-item-body">
+                                            <p class="single-item-title">{{$product->name}}</p>
+                                            <p class="single-item-price">
+                                                <span>{{$product->unit_price}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="single-item-caption">
+                                            <a class="add-to-cart pull-left" href="/cart/{{$product->id}}"><i
+                                                    class="fa fa-shopping-cart"></i></a>
+                                            <a class="beta-btn primary" href="product.html">Details <i
+                                                    class="fa fa-chevron-right"></i></a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                
+                                
+                            </div>
+                            <div class="space40">&nbsp;</div>
+                            <div class="row">
+                                @foreach ($products as $product)
+                                <div class="col-sm-3">
+                                    <div class="single-item">
+                                        <div class="single-item-header">
+                                            <a href="product.html"><img src="image/product/{{ $product ->image }}"
+                                                    alt="" style="width:500px;height:300px"></a>
+                                        </div>
+                                        <div class="single-item-body">
+                                            <p class="single-item-title">{{$product->name}}</p>
+                                            <p class="single-item-price">
+                                                <span>{{$product->unit_price}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="single-item-caption">
+                                            <a class="add-to-cart pull-left" href="shopping_cart.html"><i
+                                                    class="fa fa-shopping-cart"></i></a>
+                                            <a class="beta-btn primary" href="product.html">Details <i
+                                                    class="fa fa-chevron-right"></i></a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                
+                               
+                            </div>
+                        </div> <!-- .beta-products-list -->
+>>>>>>> Stashed changes
                     </div>
                 </div> <!-- end section with sidebar and main content -->
 

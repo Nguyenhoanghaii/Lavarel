@@ -8,6 +8,7 @@
     <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="{{ asset('assets/dest/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dest/vendors/colorbox/example3/colorbox.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dest/rs-plugin/css/settings.css') }}">
@@ -16,6 +17,15 @@
     <link rel="stylesheet" href="{{ asset('assets/dest/css/animate.css') }}">
     <link rel="stylesheet" title="style" href="{{ asset('assets/dest/css/huong-style.css') }}">
     <script src="{{ asset('assets/dest/js/jquery.js') }}"></script>
+=======
+    <link rel="stylesheet" href="{{asset('assets/dest/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/dest/vendors/colorbox/example3/colorbox.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/dest/rs-plugin/css/settings.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/dest/rs-plugin/css/responsive.css')}}">
+    <link rel="stylesheet" title="style" href="{{asset('assets/dest/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/dest/css/animate.css')}}">
+    <link rel="stylesheet" title="style" href="{{asset('assets/dest/css/huong-style.css')}}">
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -69,6 +79,7 @@
 
                     <div class="beta-comp">
                         <div class="cart">
+<<<<<<< Updated upstream
                             <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng
                                 ({{ Session::get('sl') ?? 0 }}) <i class="fa fa-chevron-down"></i></div>
                             <div class="beta-dropdown cart-body">
@@ -102,6 +113,25 @@
 
 
 
+=======
+                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng ({{ Session::get('sl') ?? 0 }}) <i
+                                    class="fa fa-chevron-down"></i></div>
+                            {{-- <div class="beta-dropdown cart-body">
+                                @foreach ( Session::get('cart') as $item)
+                                    <div class="cart-item">
+                                    <div class="media">
+                                        <a class="pull-left" href="#"><img
+                                                src="{{ asset('image/product/' . $item->image) }}" alt=""></a>
+                                        <div class="media-body">
+                                            <span class="cart-item-title">{{$item->name}}</span>
+                                            <span class="cart-item-options">Size: XS; Colar: Navy</span>
+                                            <span class="cart-item-amount">{{$item->quantity}}<span>{{$item->unit_price}}</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                
+>>>>>>> Stashed changes
                                 <div class="cart-caption">
                                     <div class="cart-total text-right">Tổng tiền: <span
                                             class="cart-total-value">{{ $tongTien }}</span></div>
@@ -113,7 +143,34 @@
                                                 class="fa fa-chevron-right"></i></a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
+                            @php
+                                    $tongTien = 0;
+                                @endphp
+
+                                @if (Session::get('cart'))
+                                    @foreach (Session::get('cart') as $item)
+                                        <div class="cart-item" style="display:flex">
+                                            <div class="media">
+                                                <a class="pull-left" href="#"><img
+                                                        src="{{ asset('image/product/'.$item->image) }}"
+                                                        alt=""></a>
+                                                <div class="media-body">
+                                                    <span class="cart-item-title">{{ $item->name }}</span>
+                                                    <span class="cart-item-options">Size: XS; Colar: Navy</span>
+                                                    <span class="cart-item-amount"> {{ $item->quantity }}
+                                                        *<span></span>{{ $item->unit_price }}</span> 
+                                                    
+                                                </div>
+                                                @php
+                                                    $tongTien += $item->quantity * $item->unit_price;
+                                                @endphp
+                                            </div>
+                                            
+                                            <a href="/remove/{{$item->id}}" style="color: red">x</a>
+                                        </div>
+                                    @endforeach
+                                @endif
                         </div> <!-- .cart -->
                     </div>
                 </div>
