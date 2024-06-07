@@ -13,34 +13,16 @@ class HomeController extends Controller
         $product = Product::limit(4)->get();
         return view('bread.pages.index', compact('product'));
     }
-<<<<<<< Updated upstream
-    function detail($id)
-    {
-        $product = Product::find($id);
-        $bestSeller = Product::limit(4)->where('unit_price', '>=', 170000)->get();
-        return view('bread.pages.product', compact('product', 'bestSeller'));
+
+    function detail(Request $request, $id) {
+        $products = Product::find($id);
+
+        return view('bread.pages.product', compact('products'));
     }
     function login()
     {
-=======
-
-    function detail(Request $request, $id) {
-        $products = Product::find($id);
-
-        return view('bread.pages.product', compact('products'));
+        return view('bread.pages.index');
     }
-
-    function detail(Request $request, $id) {
-        $products = Product::find($id);
-
-        return view('bread.pages.product', compact('products'));
-    }
-
-    function login() {
->>>>>>> Stashed changes
-        return view('bread.pages.login');
-    }
-
     function register()
     {
         return view('bread.pages.signup');
@@ -72,8 +54,7 @@ class HomeController extends Controller
         $request->session()->put('sl', $sl);
         return redirect()->back();
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
     function remove(Request $request, $id)
     {
         $cart =  $request->session()->get('cart', []);
@@ -96,10 +77,5 @@ class HomeController extends Controller
     {
         $request->session()->flush();
     }
-
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 

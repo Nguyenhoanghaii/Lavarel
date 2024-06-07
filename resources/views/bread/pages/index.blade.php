@@ -75,8 +75,7 @@
                                             <a class="add-to-cart pull-left" href="/cart/{{$item->id}}"><i
                                                     class="fa fa-shopping-cart"></i></a>
                                             <a class="beta-btn primary" href="/detail/{{$item->id}}">Details <i
-=======
-                                            <p class="single-item-title">{{$product->name}}</p>
+                                            <p> class="single-item-title">{{$product->name}}</p>
                                             <p class="single-item-price">
                                                 <span>{{$product->price}}</span>
                                             </p>
@@ -96,7 +95,6 @@
                                             <a class="add-to-cart pull-left" href="/cart/{{$product->id}}"><i
                                                     class="fa fa-shopping-cart"></i></a>
                                             <a class="beta-btn primary" href="/detail/{{$product->id}}">Details <i
->>>>>>> Stashed changes
                                                     class="fa fa-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
@@ -109,9 +107,7 @@
                         </div> <!-- .beta-products-list -->
                             <div class="space50">&nbsp;</div>
 
-<<<<<<< Updated upstream
 
-=======
                         <div class="beta-products-list">
                             <h4>Top Products</h4>
                             <div class="beta-products-details">
