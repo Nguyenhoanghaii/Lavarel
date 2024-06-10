@@ -29,6 +29,7 @@ header('Access-Control-Allow-Methods', '*');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{id}', [HomeController::class, 'detail']);
+Route::get('/product-type', [HomeController::class, 'productType']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
@@ -78,7 +79,7 @@ Route::controller(UserController::class)->group(function () {
 
 Route::prefix('/admin')->middleware([CheckAdmin::class])->name('admin-')->group(function () {
     Route::controller(AdminController::class)->group(function () {
-        Route::get('/', 'index')->name('home');
+        Route::get('/', 'index')->name('dashboard');
 
         Route::get('/users', 'users')->name('user');
         Route::get('/products', 'products')->name('product');
