@@ -58,6 +58,7 @@ class HomeController extends Controller
     function remove(Request $request, $id)
     {
         $cart =  $request->session()->get('cart', []);
+        
         $sl =  $request->session()->get('sl', 0);
         // unset($cart[$id]);
        

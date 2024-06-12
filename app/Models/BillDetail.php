@@ -9,5 +9,10 @@ class BillDetail extends Model
 {
     use HasFactory;
     protected $table = 'bill_detail';
-    protected $fillable = ["quantity", "unit_price","id_bill","id_product"];
+    protected $fillable = ["quantity", "unit_price", "id_bill", "id_product"];
+
+    function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'id_product');
+    }
 }

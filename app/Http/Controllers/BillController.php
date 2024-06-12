@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Bill;
 use App\Models\BillDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class BillController extends Controller
@@ -15,29 +18,37 @@ class BillController extends Controller
         $cart =  $request->session()->get('cart', []);
         $bill =  Bill::create([
 
-            "name"=>$request->name,
+            "name" => $request->name,
             "gender" => $request->gender,
-            "email" =>$request->email,
-            'phone'=> $request->phone,
-            'address'=> $request->address,
-            'note'=> $request->note,
-            'total'=> $request->total,
+            "email" => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'note' => $request->note,
+            'total' => $request->total,
+            'id_customer' => Auth::id(),
         ]);
 
 
 
-        
-        foreach($cart as $item){
+
+        foreach ($cart as $item) {
             BillDetail::create([
                 "quantity" => $item->quantity,
                 "unit_price" => $item->unit_price,
                 "id_bill" => $bill->id,
-                "id_product" =>$item->id,
-                
+                "id_product" => $item->id,
+
             ]);
         }
 
-
+        $request->session()->put('cart', []);
+        $request->session()->put('sl', 0);
         return view('bread.pages.checkout');
+    }
+    public function infobill()
+    {
+        $bill = Bill::with('billDetail.product.typeProduct')->get();
+        
+        return view('bread.pages.bill', compact('bill'));
     }
 }

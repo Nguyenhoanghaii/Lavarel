@@ -23,7 +23,7 @@ class UserController extends Controller
             'phone'=> $request->phone,
             'address'=> $request->password,
         ]);
-        return view('bread.pages.signup');
+        return view('bread.pages.login');
     }
     public function create()
     {
