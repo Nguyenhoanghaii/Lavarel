@@ -48,34 +48,35 @@ class BillController extends Controller
     public function infobill()
     {
         $bill = Bill::with('billDetail.product.typeProduct')->get();
-        
+
         return view('bread.pages.bill', compact('bill'));
     }
-    
+
     function delete(Request $request, $id)
     {
         $bill = Bill::with('billDetail.product.typeProduct')->find($id);
         if ($bill) {
             $bill->delete();
             return redirect()->back();
-        }else{
+        } else {
             return redirect()->back();
         };
-        
     }
     function edit(Request $request, $id)
     {
-        $bill = Bill::with('billDetail.product.typeProduct')->get()->where('id',$id);
+        $bill = Bill::with('billDetail.product.typeProduct')->get()->where('id', $id);
         if ($bill) {
             // $bill->delete();
             return view('bread.pages.bill_edit', compact('bill'));
-        }else{
+        } else {
             return redirect()->back();
         };
-        
     }
-    function submit(Request $request){
+    function submit(Request $request)
+    {
         $bill = Bill::with('billDetail.product.typeProduct')->find($request->id);
+        // $bill = BillDetail::find($id);
+        // dd($request->all());
         $bill->update([
             "id" => $request->id,
             "name" => $request->name,
@@ -85,7 +86,16 @@ class BillController extends Controller
             "address" => $request->address,
             "status" => $request->status,
             "total" => $request->total,
+            "id_product" => $request->billDetail->id_product,
         ]);
-        return redirect()->route('info.list');    }
+            
+        // $bill->billDetail()->update([
+        //     "id_product" => $request->id_product,
+        //     "quantity" => $request->quantity,
+        //     "total" => $request->product->name,
+        //     "unit_price" => $request->unit_price,
 
+        // ]);
+        return redirect()->route('info.list');
+    }
 }

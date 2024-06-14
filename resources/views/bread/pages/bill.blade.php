@@ -49,6 +49,7 @@
                         So luong : {{ $detail->quantity }} </br>
                         Name: {{ $detail->product->name }} </br>
                         Loai san pham: {{ $detail->product->typeProduct->name }} </br>
+                        Giá: {{ $detail->unit_price }} </br>
                     </td>
                     
                 </tr>
