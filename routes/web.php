@@ -44,6 +44,8 @@ Route::get('/checkout', [UserController::class, 'checkout'])->name('checkout');
 Route::post('/save', [BillController::class, 'note'])->name('save');
 Route::get('/save', [BillController::class, 'note']);
 Route::get('/infobill', [BillController::class, 'infobill']);
+Route::get('/delete/{id}', [BillController::class, 'delete']);
+Route::get('/edit/{id}', [BillController::class, 'edit']);
 
 
 Route::prefix('admin')->group(function () {

@@ -32,12 +32,10 @@
                     Total: {{ $item->total }} <br>
                 </th>
                 <th rowspan="{{ count($item->billDetail) + 1 }}" style="text-align: center">
-                  <a href="/delete/{{$item->id}}"> 
-                    <button  type="button" class="btn btn-danger">Delete</button>
-                  </a>
+                 
                   <a href="/edit/{{$item->id}}">
-                    <button type="button" class="btn btn-success">Edit</button>
-                  </a> 
+                    <button type="submit" class="btn btn-success">submit</button>
+                  </a>  
                 </th>
                
                 
@@ -59,7 +57,6 @@
         @endforeach
         
 
-        {{-- @endforeach --}}
 
 
     </table>

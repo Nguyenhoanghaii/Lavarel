@@ -51,4 +51,28 @@ class BillController extends Controller
         
         return view('bread.pages.bill', compact('bill'));
     }
+    
+    function delete(Request $request, $id)
+    {
+        $bill = Bill::with('billDetail.product.typeProduct')->find($id);
+        if ($bill) {
+            $bill->delete();
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        };
+        
+    }
+    function edit(Request $request, $id)
+    {
+        $bill = Bill::with('billDetail.product.typeProduct')->get()->where('id',$id);
+        if ($bill) {
+            // $bill->delete();
+            return view('bread.pages.bill_edit', compact('bill'));
+        }else{
+            return redirect()->back();
+        };
+        
+    }
+
 }
