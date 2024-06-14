@@ -18,7 +18,7 @@
 </style>
 
 <body>
-    <form action="{{ route('product.edit') }}" method="get">
+    <form action="{{ route('info.edit') }}" method="get">
         <table style="width:50%">
                 @foreach ($bill as $item)
                     <tr>
@@ -59,9 +59,9 @@
                         </th>
                         <th rowspan="{{ count($item->billDetail) + 1 }}" style="text-align: center">
                         
-                        <a href="/edit">
+                       
                             <button type="submit" class="btn btn-success">submit</button>
-                        </a>  
+                       
                         </th>
                     
                         

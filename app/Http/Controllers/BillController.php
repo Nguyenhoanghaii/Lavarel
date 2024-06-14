@@ -86,6 +86,6 @@ class BillController extends Controller
             "status" => $request->status,
             "total" => $request->total,
         ]);
-        return redirect()->route('pages.bill');    }
+        return redirect()->route('info.list');    }
 
 }

@@ -43,10 +43,10 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/checkout', [UserController::class, 'checkout'])->name('checkout');
 Route::post('/save', [BillController::class, 'note'])->name('save');
 Route::get('/save', [BillController::class, 'note']);
-Route::get('/infobill', [BillController::class, 'infobill']);
+Route::get('/infobill', [BillController::class, 'infobill'])->name('info.list');
 Route::get('/delete/{id}', [BillController::class, 'delete']);
 Route::get('/edit/{id}', [BillController::class, 'edit']);
-Route::get('/edit', [BillController::class, 'submit']);
+Route::get('/edit', [BillController::class, 'submit'])->name('info.edit');
 
 
 Route::prefix('admin')->group(function () {
