@@ -74,5 +74,18 @@ class BillController extends Controller
         };
         
     }
+    function submit(Request $request, $id){
+        $bill = Bill::with('billDetail.product.typeProduct')->find($request->id);
+        $bill->update([
+            "id" => $request->id,
+            "name" => $request->name,
+            "gender" => $request->gender,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "status" => $request->status,
+            "total" => $request->total,
+        ]);
+        return redirect()->route('pages.bill');    }
 
 }

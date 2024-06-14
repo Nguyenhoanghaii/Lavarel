@@ -22,25 +22,50 @@
         @foreach ($bill as $item)
             <tr>
                 <th rowspan="{{ count($item->billDetail) + 1 }}" style="text-align: left">
-                    id : {{ $item->id }} <br>
-                    Name : {{ $item->name }} <br>
-                    Gender: {{ $item->gender }} <br>
-                    Email: {{ $item->email }} <br>
-                    Phone: {{ $item->phone }} <br>
-                    Address: {{ $item->address }} <br>
-                    Status: {{ $item->status }} <br>
-                    Total: {{ $item->total }} <br>
+                    <div class="form-group">
+                        <label for="email">id :</label>
+                        <input type="text" class="form-control" id="email" name="id" value="{{ $item->id }}" >
+                      </div>
+                    <div class="form-group">
+                        <label for="email">Name :</label>
+                        <input type="text" class="form-control" id="email" name="name" value="{{ $item->name }}" >
+                      </div>
+                    <div class="form-group">
+                        <label for="email">Gender :</label>
+                        <input type="text" class="form-control" id="email" name="gender" value="{{ $item->gender }}" >
+                      </div>
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input type="text" class="form-control" id="email" name="email" value="{{ $item->email }}" >
+                      </div>
+                    <div class="form-group">
+                        <label for="email">Phone :</label>
+                        <input type="text" class="form-control" id="email" name="phone" value="{{ $item->phone }}" >
+                      </div>
+                    <div class="form-group">
+                        <label for="email">Address :</label>
+                        <input type="text" class="form-control" id="email" name="address" value="{{ $item->address }}" >
+                      </div>
+                    <div class="form-group">
+                        <label for="email">Status :</label>
+                        <input type="text" class="form-control" id="email" name="status" value="{{ $item->status }}" >
+                      </div>
+                    <div class="form-group">
+                        <label for="email">Total :</label>
+                        <input type="text" class="form-control" id="email" name="total" value="{{ $item->total }}" >
+                      </div>
+                    
                 </th>
                 <th rowspan="{{ count($item->billDetail) + 1 }}" style="text-align: center">
                  
-                  <a href="/edit/{{$item->id}}">
+                  <a href="/submit">
                     <button type="submit" class="btn btn-success">submit</button>
                   </a>  
                 </th>
                
                 
             </tr>
-            @foreach ($item->billDetail as $detail)
+            {{-- @foreach ($item->billDetail as $detail)
                 <tr>
                   
                     <td>id prodcut : {{ $detail->id_product }} </br>
@@ -51,7 +76,7 @@
                     
                 </tr>
                 
-            @endforeach
+            @endforeach --}}
             
             
         @endforeach

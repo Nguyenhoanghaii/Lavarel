@@ -46,6 +46,7 @@ Route::get('/save', [BillController::class, 'note']);
 Route::get('/infobill', [BillController::class, 'infobill']);
 Route::get('/delete/{id}', [BillController::class, 'delete']);
 Route::get('/edit/{id}', [BillController::class, 'edit']);
+Route::get('/sunmit', [BillController::class, 'submit']);
 
 
 Route::prefix('admin')->group(function () {
