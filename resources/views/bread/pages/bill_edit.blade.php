@@ -58,7 +58,7 @@
                 </th>
                 <th rowspan="{{ count($item->billDetail) + 1 }}" style="text-align: center">
                  
-                  <a href="/submit">
+                  <a href="/edit">
                     <button type="submit" class="btn btn-success">submit</button>
                   </a>  
                 </th>

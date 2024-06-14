@@ -74,7 +74,7 @@ class BillController extends Controller
         };
         
     }
-    function submit(Request $request, $id){
+    function submit(Request $request){
         $bill = Bill::with('billDetail.product.typeProduct')->find($request->id);
         $bill->update([
             "id" => $request->id,
