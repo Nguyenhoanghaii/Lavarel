@@ -74,7 +74,7 @@ class BillController extends Controller
     }
     function submit(Request $request)
     {
-        $bill = Bill::with('billDetail.product.typeProduct')->find($request->id);
+        $bill = Bill::find($request->id);
         // $bill = BillDetail::find($id);
         // dd($request->all());
         $bill->update([
@@ -86,9 +86,19 @@ class BillController extends Controller
             "address" => $request->address,
             "status" => $request->status,
             "total" => $request->total,
-            "id_product" => $request->billDetail->id_product,
         ]);
-            
+
+        foreach ($request->all() as $key => $rq) {
+            $arr = explode('-', $key);
+
+            if (isset($arr[1])) {
+                [$detailId, $detailValue] = $arr;
+                BillDetail::find($detailId)->update([$detailValue => $rq]);
+
+            }
+
+        }
+
         // $bill->billDetail()->update([
         //     "id_product" => $request->id_product,
         //     "quantity" => $request->quantity,
@@ -96,6 +106,6 @@ class BillController extends Controller
         //     "unit_price" => $request->unit_price,
 
         // ]);
-        return redirect()->route('info.list');
+        return redirect()->back();
     }
 }

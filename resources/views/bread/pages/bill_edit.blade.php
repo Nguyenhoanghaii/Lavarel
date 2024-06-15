@@ -65,17 +65,11 @@
 
                     </th>
                     <th rowspan="{{ count($item->billDetail) + 1 }}" style="text-align: center">
-
-
                         <button type="submit" class="btn btn-success">submit</button>
-
                     </th>
-
-
                 </tr>
                 @foreach ($item->billDetail as $detail)
                     <tr>
-
                         <td>
                             <div class="form-group">
                                 <label for="email">id :</label>
@@ -113,10 +107,6 @@
                     </tr>
                 @endforeach
             @endforeach
-
-
-
-
         </table>
     </form>
 
