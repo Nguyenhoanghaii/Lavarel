@@ -17,8 +17,8 @@
     <div class="container">
         <div id="content">
 
-            <form action="{{route('save')}}" method="post" class="beta-form-checkout">
-				@csrf
+            <form action="{{ route('save-api') }}" method="post" class="beta-form-checkout">
+                {{-- @csrf --}}
                 <div class="row">
                     <div class="col-sm-6">
                         <h4>Đặt hàng</h4>
@@ -63,9 +63,9 @@
                             <div class="your-order-head">
                                 <h5>Đơn hàng của bạn</h5>
                             </div>
-							@php
-								$tongTien = 0;
-							@endphp
+                            @php
+                                $tongTien = 0;
+                            @endphp
                             @foreach (Session::get('cart') as $item)
                                 <div class="your-order-body" style="padding: 0px 10px">
                                     <div class="your-order-item">
@@ -80,9 +80,9 @@
                                                     <span class="color-gray your-order-info">Size: M</span>
                                                     <span class="color-gray your-order-info">{{ $item->quantity }}</span>
                                                 </div>
-												@php
-												    $tongTien += $item->quantity * $item->unit_price;
-												@endphp
+                                                @php
+                                                    $tongTien += $item->quantity * $item->unit_price;
+                                                @endphp
                                             </div>
                                             <!-- end one item -->
                                         </div>
@@ -95,9 +95,9 @@
                                 <div class="pull-left">
                                     <p class="your-order-f18">Tổng tiền:</p>
                                 </div>
-                                <div class="pull-right" >
+                                <div class="pull-right">
                                     <h5 class="color-black">{{ $tongTien }}</h5>
-                                    <input type="hidden" id="total" name="total" value="{{$tongTien}}">
+                                    <input type="hidden" id="total" name="total" value="{{ $tongTien }}">
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -133,8 +133,8 @@
                                 </ul>
                             </div>
 
-                            <div class="text-center"><button class="beta-btn primary" type="submit" >Đặt hàng <i
-											class="fa fa-chevron-right"></i></button></div>
+                            <div class="text-center"><button class="beta-btn primary" type="submit">Đặt hàng <i
+                                        class="fa fa-chevron-right"></i></button></div>
                         </div> <!-- .your-order -->
                     </div>
                 </div>

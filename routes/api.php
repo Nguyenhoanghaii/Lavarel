@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/save', [BillController::class, 'note'])->name('save-api');
+Route::get('/product/{id}', [ProductController::class, 'delete']);
+Route::get('/user/{id}', [UserController::class, 'deleUser']);
+Route::get('/edit/{id}', [UserController::class, 'edit']);
+
+Route::post('/user/create', [UserController::class, 'apiCreateUser']);
+
+Route::post('/submit/{id}', [UserController::class, 'submit']);

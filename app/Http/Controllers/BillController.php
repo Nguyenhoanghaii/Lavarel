@@ -15,7 +15,7 @@ class BillController extends Controller
     public function note(Request $request)
     {
         // dd($request->all());
-        $cart =  $request->session()->get('cart', []);
+        $cart =  Session::get('cart', []);
         $bill =  Bill::create([
 
             "name" => $request->name,
@@ -41,8 +41,8 @@ class BillController extends Controller
             ]);
         }
 
-        $request->session()->put('cart', []);
-        $request->session()->put('sl', 0);
+        Session::put('cart', []);
+        Session::put('sl', 0);
         return view('bread.pages.checkout');
     }
     public function infobill()
@@ -72,6 +72,7 @@ class BillController extends Controller
             return redirect()->back();
         };
     }
+
     function submit(Request $request)
     {
         $bill = Bill::find($request->id);
@@ -94,9 +95,7 @@ class BillController extends Controller
             if (isset($arr[1])) {
                 [$detailId, $detailValue] = $arr;
                 BillDetail::find($detailId)->update([$detailValue => $rq]);
-
             }
-
         }
 
         // $bill->billDetail()->update([
