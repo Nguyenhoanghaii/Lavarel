@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,12 @@ Route::get('/test-login', function() {
  
     $user->token = $user->createToken("token")->accessToken;
     return response()->json($user);
+});
+Route::middleware('auth:api')->group(function() {
+    Route::get('/test-auth', function() {
+        $user = Auth::user();
+        return response()->json($user);
+    });
 });
 
 Route::get('/test-api', function() {

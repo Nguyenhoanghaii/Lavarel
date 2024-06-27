@@ -13,9 +13,6 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-header('Access-Control-Allow-Origin', '*');
-header('Access-Control-Allow-Methods', '*');
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
