@@ -26,5 +26,13 @@ class ProductController extends Controller
         return view('product.create');
     }
 
+    public function products() {
+        $products = Product::paginate(10);
+
+        return response()->json([
+            'status' => true,
+            'data' => $products
+        ]);
+    }
 
 }

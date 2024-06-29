@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/test-login', function() {
     $user = User::first();
- 
+
     $user->token = $user->createToken("token")->accessToken;
     return response()->json($user);
 });
@@ -32,6 +33,7 @@ Route::middleware('auth:api')->group(function() {
         return response()->json($user);
     });
 });
+Route::get('/product-with-pagination', [ProductController::class, 'products']);
 
 Route::get('/test-api', function() {
     echo 'toang';
