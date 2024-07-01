@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller
 {
@@ -19,11 +20,13 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            $token = Auth::user()->createToken("token")->accessToken;
+            Cookie::queue('api_token', $token, 60, null, null, false, false);
             $request->session()->regenerate();
- 
+
             return redirect()->route('home');
         }
- 
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
@@ -31,11 +34,11 @@ class UserController extends Controller
 
     function postLogout(Request $request) {
         Auth::logout();
- 
+
         $request->session()->invalidate();
-    
+
         $request->session()->regenerateToken();
-    
+
         return redirect('/');
 
     }

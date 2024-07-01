@@ -155,13 +155,20 @@
             location.reload();
         }
 
+        function getCookie(name) {
+            function escape(s) { return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1'); }
+            var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+            return match ? match[1] : null;
+        }
+
         async function callApi(url, method, objectData = null) {
             return await $.ajax({
                 url: url,
                 method: method,
                 data: objectData,
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Authorization': 'Bearer ' + getCookie('api_token')
                 },
             }).done(function(data) {
                 return data

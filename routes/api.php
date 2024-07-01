@@ -32,8 +32,8 @@ Route::middleware('auth:api')->group(function() {
         $user = Auth::user();
         return response()->json($user);
     });
+    Route::get('/product-with-pagination', [ProductController::class, 'products']);
 });
-Route::get('/product-with-pagination', [ProductController::class, 'products']);
 
 Route::get('/test-api', function() {
     echo 'toang';
