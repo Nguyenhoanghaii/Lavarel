@@ -2,10 +2,10 @@ document.querySelector(".chat[data-chat=person1]").classList.add("active-chat");
 document.querySelector(".person[data-chat=person1]").classList.add("active");
 
 let friends = {
-        list: document.querySelector("ul.people"),
-        all: document.querySelectorAll(".left .person"),
-        name: "",
-    },
+    list: document.querySelector("ul.people"),
+    all: document.querySelectorAll(".left .person"),
+    name: "",
+},
     chat = {
         container: document.querySelector(".container .right"),
         current: null,
@@ -32,7 +32,7 @@ function setAciveChat(f) {
     chat.name.innerHTML = friends.name;
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", async (event) => {
     // Your web app's Firebase configuration
     const firebaseConfig = {
         apiKey: "AIzaSyAs_-0Bv1A8fi1WtqsfB9cecFyH8fGZ8Xs",
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         // Add Data
         async function addData() {
             try {
-                const docRef = await db.collection("chat").add({
+                const docRef = await db.collection("users").add({
                     name: "John Doe",
                     email: "johndoe@example.com",
                 });
@@ -64,52 +64,88 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
 
         // Get Data
-        async function getData() {
+        async function getCustomers() {
             try {
-                const querySnapshot = await db.collection("chat").get();
-                console.log('querySnapshot', querySnapshot.docs);
-                
+                const querySnapshot = await db.collection("users").get();
+                let result = [];
                 querySnapshot.forEach((doc) => {
-                    console.log(`${doc.id} => ${doc.data().name}`);
+                    result.push(doc);
                 });
+                return result;
             } catch (e) {
                 console.error("Error getting documents: ", e);
             }
         }
 
+        async function getDetail(id) {
+            var docRef = await db.collection('message')
+            .where('user_id', '==', id)
+            .orderBy("created_at")
+            .get();
+
+            docRef.forEach((doc) => {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+
+        }
+
         // Update Data
         async function updateData() {
             const docId = prompt("Enter the document ID to update:");
-                const userRef = db.collection("chat").doc(docId);
+            const userRef = db.collection("users").doc(docId);
 
-                try {
-                    await userRef.update({
-                        email: "newemail@example.com",
-                    });
-                    console.log("Document successfully updated!");
-                } catch (e) {
-                    console.error("Error updating document: ", e);
-                }
+            try {
+                await userRef.update({
+                    email: "newemail@example.com",
+                });
+                console.log("Document successfully updated!");
+            } catch (e) {
+                console.error("Error updating document: ", e);
+            }
         }
 
         // Delete Data
         async function deleteData() {
             const docId = prompt("Enter the document ID to delete:");
-                try {
-                    await db.collection("chat").doc(docId).delete();
-                    console.log("Document successfully deleted!");
-                } catch (e) {
-                    console.error("Error removing document: ", e);
-                }
+            try {
+                await db.collection("users").doc(docId).delete();
+                console.log("Document successfully deleted!");
+            } catch (e) {
+                console.error("Error removing document: ", e);
+            }
         }
 
-        getData()
+        let allCus = await getCustomers();
 
-        // Set up a real-time listener for changes in the "chat" collection
-        db.collection("chat").onSnapshot((snapshot) => {
+        $('#people').children().remove();
+        let child = ``;
+        allCus.forEach(e => {
+
+            getDetail(e.id);
+            console.log('e', e.id);
+
+            child = `${child} <li class="person" data-chat="person${e.id}">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
+                        <span class="name">${e.data().name}</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">I was wondering...</span>
+                    </li>`
+        })
+
+        $('#people').append(child);
+
+        // Set up a real-time listener for changes in the "users" collection
+        db.collection("users").onSnapshot((snapshot) => {
             snapshot.docChanges().forEach((change) => {
                 if (change.type === "added") {
-                    console.log("New user: ", change.doc.data());
+                    // console.log("New user: ", change.doc.data());
                 }
                 if (change.type === "modified") {
                     console.log("Modified user: ", change.doc.data());
@@ -123,5 +159,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
         console.error("Error initializing Firebase: ", e);
     }
 
-    
+
 });

@@ -6,10 +6,20 @@ use App\Models\OrderDetail;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PayOS\PayOS;
 
 class OrderController extends Controller
 {
-    //
+    private string $payOSClientId;
+    private string $payOSApiKey;
+    private string $payOSChecksumKey;
+
+    public function __construct()
+    {
+        $this->payOSClientId = env("PAYOS_CLIENT_ID");
+        $this->payOSApiKey = env("PAYOS_API_KEY");
+        $this->payOSChecksumKey = env("PAYOS_CHECKSUM_KEY");
+    }
 
     function create(Request $request) {
         $carts = $request->cart ?? '[]';
@@ -43,5 +53,45 @@ class OrderController extends Controller
         $order->delete();
 
         return response()->json('delete success', 200);
+    }
+
+    public function getPaymentLinkInfoOfOrder(string $id)
+    {
+        $payOS = new PayOS($this->payOSClientId, $this->payOSApiKey, $this->payOSChecksumKey);
+        try {
+            $response = $payOS->getPaymentLinkInformation($id);
+            return response()->json([
+                "error" => 0,
+                "message" => "Success",
+                "data" => $response
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "error" => $th->getCode(),
+                "message" => $th->getMessage(),
+                "data" => null
+            ]);
+        }
+    }
+
+    public function cancelPaymentLinkOfOrder(Request $request, string $id)
+    {
+        $body = json_decode($request->getContent(), true);
+        $payOS = new PayOS($this->payOSClientId, $this->payOSApiKey, $this->payOSChecksumKey);
+        try {
+            $cancelBody = is_array($body) && @$body["cancellationReason"] ?? 'nothing';
+            $response = $payOS->cancelPaymentLink($id, $cancelBody);
+            return response()->json([
+                "error" => 0,
+                "message" => "Success",
+                "data" => $response
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "error" => $th->getCode(),
+                "message" => $th->getMessage(),
+                "data" => null
+            ]);
+        }
     }
 }

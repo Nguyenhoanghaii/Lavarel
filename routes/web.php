@@ -3,9 +3,11 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckAdmin;
@@ -98,4 +100,16 @@ Route::prefix('/admin')->middleware([CheckAdmin::class])->name('admin-')->group(
         Route::delete('/product-delete/{id}', 'delete')->name('product-delete');
     });
     // Route::get('/remove/{id}', 'remove')->name('cart-remove');
+});
+
+Route::post('/create-payment-link', [CheckoutController::class, 'createPaymentLink']);
+
+Route::prefix('/order')->group(function () {
+    Route::post('/create', [OrderController::class, 'createOrder']);
+    Route::get('/{id}', [OrderController::class, 'getPaymentLinkInfoOfOrder']);
+    Route::put('/{id}', [OrderController::class, 'cancelPaymentLinkOfOrder']);
+});
+
+Route::prefix('/payment')->group(function () {
+    Route::post('/payos', [PaymentController::class, 'handlePayOSWebhook']);
 });

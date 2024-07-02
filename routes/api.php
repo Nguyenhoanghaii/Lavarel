@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,6 +38,14 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/product-with-pagination', [ProductController::class, 'products']);
 });
 
-Route::get('/test-api', function() {
-    echo 'toang';
+Route::post('/create-payment-link', [CheckoutController::class, 'createPaymentLink']);
+
+Route::prefix('/payos')->group(function () {
+    Route::post('/create', [OrderController::class, 'createOrder']);
+    Route::get('/{id}', [OrderController::class, 'getPaymentLinkInfoOfOrder']);
+    Route::put('/{id}', [OrderController::class, 'cancelPaymentLinkOfOrder']);
+});
+
+Route::prefix('/payment')->group(function () {
+    Route::post('/payos', [PaymentController::class, 'handlePayOSWebhook']);
 });

@@ -10,6 +10,7 @@
     <script src="/firebase/firebase-app-compat.js"></script>
   <!-- Firebase Firestore -->
   <script src="/firebase/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -33,16 +34,28 @@
                 <div class="top"><span>To: <span class="name">Dog Woofson</span></span></div>
                 <div class="chat" data-chat="person1">
                     <div class="conversation-start">
-                        <span>Today, 6:48 AM</span>
+                        <span>Today, 5:38 PM</span>
                     </div>
                     <div class="bubble you">
-                        Hello,
+                        Hello, can you hear me?
+                    </div>
+                    <div class="bubble me">
+                        ... about who we used to be.
                     </div>
                     <div class="bubble you">
-                        it's me.
+                        I'm in California dreaming
+                    </div>
+                    <div class="bubble me">
+                        ... about who we used to be.
+                    </div>
+                    <div class="bubble me">
+                        Are you serious?
                     </div>
                     <div class="bubble you">
-                        I was wondering...
+                        When we were younger and free...
+                    </div>
+                    <div class="bubble you">
+                        I've forgotten how it felt before
                     </div>
                 </div>
                 <div class="write">
