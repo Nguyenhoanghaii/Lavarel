@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
@@ -74,6 +75,12 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/register', 'postRegister')->name('postRegister');
 });
+
+Route::controller(ChatController::class)->group(function () {
+
+    Route::get('/chat', 'index');
+});
+
 
 
 Route::prefix('/admin')->middleware([CheckAdmin::class])->name('admin-')->group(function () {
