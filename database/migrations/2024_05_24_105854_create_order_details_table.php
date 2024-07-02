@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('product_id')->nullable();
-            $table->unsignedInteger('order_id')->nullable();
+            $table->unsignedInteger('id_product')->nullable();
+            $table->unsignedInteger('id_bill')->nullable();
             $table->unsignedInteger('quantity')->nullable();
             $table->timestamps();
         });

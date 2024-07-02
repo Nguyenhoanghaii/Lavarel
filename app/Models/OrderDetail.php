@@ -9,10 +9,12 @@ class OrderDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id', 'order_id', 'quantity'];
+    protected $table = 'bill_detail';
+
+    protected $fillable = ['id_product', 'id_bill', 'quantity'];
 
     public function product() {
-        return $this->hasOne(Product::class, 'id', 'product_id');
+        return $this->hasOne(Product::class, 'id', 'id_product');
     }
 
     public function order() {

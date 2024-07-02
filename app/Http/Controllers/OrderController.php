@@ -20,9 +20,10 @@ class OrderController extends Controller
             $data = [];
             foreach ($carts as $cart) {
                 array_push($data, [
-                    'order_id' => $order->id,
-                    'product_id' => $cart['id'],
+                    'id_bill' => $order->id,
+                    'id_product' => $cart['id'],
                     'quantity' => $cart['quantity'],
+                    'unit_price' => $cart['unit_price'],
                 ]);
             };
             $cartDetail = OrderDetail::insert($data);
@@ -32,7 +33,7 @@ class OrderController extends Controller
     }
 
     function detail($id) {
-        $orderDetails = OrderDetail::where('order_id', $id)->with('product')->get();
+        $orderDetails = OrderDetail::where('id_bill', $id)->with('product')->get();
         return response()->json($orderDetails, 200);
     }
 

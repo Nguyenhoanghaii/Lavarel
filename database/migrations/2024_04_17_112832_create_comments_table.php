@@ -15,7 +15,7 @@ return new class extends Migration
         // Schema::create('comments', function (Blueprint $table) {
         //     $table->id();
         //     $table->text('content');
-        //     $table->unsignedInteger('product_id');
+        //     $table->unsignedInteger('id_product');
         //     $table->timestamps();
         // });
     }
