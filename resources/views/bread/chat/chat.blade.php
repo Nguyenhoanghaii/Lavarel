@@ -32,37 +32,25 @@
             </div>
             <div class="right">
                 <div class="top"><span>To: <span class="name">Dog Woofson</span></span></div>
-                <div class="chat" data-chat="person1">
+                <div class="chat" id="chat" data-chat="person1">
                     <div class="conversation-start">
                         <span>Today, 5:38 PM</span>
                     </div>
-                    <div class="bubble you">
-                        Hello, can you hear me?
-                    </div>
-                    <div class="bubble me">
-                        ... about who we used to be.
-                    </div>
-                    <div class="bubble you">
-                        I'm in California dreaming
-                    </div>
-                    <div class="bubble me">
-                        ... about who we used to be.
-                    </div>
-                    <div class="bubble me">
-                        Are you serious?
-                    </div>
-                    <div class="bubble you">
-                        When we were younger and free...
-                    </div>
-                    <div class="bubble you">
-                        I've forgotten how it felt before
+                    <div id="content">
+
+                        <div class="bubble you">
+                            Hello, can you hear me?
+                        </div>
+                        <div class="bubble me">
+                            ... about who we used to be.
+                        </div>
                     </div>
                 </div>
                 <div class="write">
                     <a href="javascript:;" class="write-link attach"></a>
-                    <input type="text" />
+                    <input type="text" id="admin-chat"/>
                     <a href="javascript:;" class="write-link smiley"></a>
-                    <a href="javascript:;" class="write-link send"></a>
+                    <a href="javascript:;" class="write-link send" onclick="addData()"></a>
                 </div>
             </div>
         </div>
