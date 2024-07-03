@@ -6,6 +6,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Laravel\Prompts\search;
 
 class UserController extends Controller
 {
@@ -29,16 +30,20 @@ class UserController extends Controller
         return view('bread.pages.login');
     }
 
+    public function apiGetList(UserCreateRequest $request)
+    {
+        return response()->json([
+            "status" => true,
+            "message" => "create success",
+            "data" => User::all(),
+        ]);
+    }
+
     public function apiCreateUser(UserCreateRequest $request)
     {
-        $validate = $request->validate();
-
-        dd($validate);
-        // dd($request->all());
         $user = User::create([
-
             "email" => $request->email,
-            "full_name" => $request->fullname,
+            "full_name" => $request->full_name,
             "password" => bcrypt($request->password),
             'phone' => $request->phone,
             'address' => $request->password,
@@ -55,6 +60,32 @@ class UserController extends Controller
         return view('bread.pages.signup');
     }
 
+    public function apiAuthenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $user = User::where('email', $request->email)->first();
+
+            // Creating a token without scopes...
+            $user->token = $user->createToken('Token Name')->accessToken;
+
+            return response()->json([
+                "status" => true,
+                "message" => "login success",
+                "data" => $user,
+            ]);
+        }
+
+        return response()->json([
+            "status" => false,
+            "message" => "login fail",
+            "data" => null,
+        ]);
+    }
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
@@ -148,4 +179,16 @@ class UserController extends Controller
             "data" => $user
         ]);
     }
+    public function search()
+    {
+        $search = search(
+            label: 'Search for the user that should receive the mail',
+            placeholder: 'E.g. Taylor Otwell',
+            options: fn (string $value) => strlen($value) > 0
+                ? User::where('name', 'like', "%{$value}%")->pluck('name', 'id')->all()
+                : [],
+            hint: 'The user will receive an email immediately.'
+        );
+    }
+    
 }

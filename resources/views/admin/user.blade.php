@@ -62,7 +62,8 @@
                                                 <th>{{ $item->address }}</th>
                                                 <th>{{ $item->email }}</th>
                                                 <th>
-                                                    <button onclick="deleUser({{ $item->id }})">delete</button>
+                                                    <button onclick="deleUser({{ $item->id }})"
+                                                        class="btn btn-danger">delete</button>
                                                     <button onclick="edit({{ $item->id }})" type="button"
                                                         class="btn btn-primary" data-toggle="modal"
                                                         data-target="#exampleModal" data-whatever="@mdo"
@@ -91,6 +92,8 @@
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">Name:</label>
                                                         <input type="text" class="form-control" id="name"
+                                                            value="">
+                                                        <input type="hidden" class="form-control" id="id"
                                                             value="">
                                                     </div>
                                                     <div class="form-group">
@@ -159,10 +162,16 @@
                     data.data.forEach(element => {
                         let e = `<tr>
                                 <th>${element.full_name}</th>
-                                <th>${element.email}</th>
                                 <th>${element.phone}</th>
                                 <th>${element.address}</th>
-                                <th><button onclick="deleUser(${element.id})">delete</button></th>
+                                <th>${element.email}</th>
+                                <th>
+                                    <button onclick="deleUser(${element.id})" class="btn btn-danger">delete</button>
+                                    <button onclick="edit(${element.id})" type="button"
+                                                        class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#exampleModal"
+                                                        onclick="onEdit()">edit</button>
+                                    </th>
                                           </tr>`;
                         str = `${str}${e}`
                     });
@@ -171,7 +180,8 @@
 
         }
 
-        function handleSubmit($id) {
+        function handleSubmit() {
+            let id = $('#id').val()
             if (isCreate) {
                 createUser();
             } else {
@@ -189,6 +199,7 @@
                     $('#phone').val(data.data.phone)
                     $('#email').val(data.data.email)
                     $('#address').val(data.data.address)
+                    $('#id').val(data.data.id)
                 });
         }
 
@@ -244,7 +255,13 @@
                                 <th>${element.email}</th>
                                 <th>${element.phone}</th>
                                 <th>${element.address}</th>
-                                <th><button onclick="deleUser(${element.id})">delete</button></th>
+                                <th>
+                                    <button onclick="deleUser(${element.id})" class="btn btn-danger">delete</button>
+                                    <button onclick="edit(${element.id})" type="button"
+                                                        class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#exampleModal"
+                                                        onclick="onEdit()">edit</button>
+                                    </th>
                                           </tr>`;
                         str = `${str}${e}`
                     });

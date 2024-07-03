@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bill_detail', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_bill');
-            $table->integer('id_product');
-            $table->integer('quantity');
-            $table->float('unit_price');
-            $table->timestamps();
-        });
+        // Schema::create('bill_detail', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('id_bill');
+        //     $table->integer('id_product');
+        //     $table->integer('quantity');
+        //     $table->float('unit_price');
+        //     $table->timestamps();
+        // });
     }
 
     /**

@@ -5,8 +5,11 @@
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
+
+                    <div class="col-sm-6" style="display: flex; gap: 20px">
                         <h1>Simple Tables</h1>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                            data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create</button>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -63,11 +66,60 @@
                                                 <th>{{ $item->unit_price }}</th>
                                                 <th>
                                                     <button onclick="deleteProduct({{ $item->id }})">delete</button>
+                                                    <button onclick="editProduct({{ $item->id }})" type="button"
+                                                        class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#exampleModal" data-whatever="@mdo"
+                                                        onclick="onEdit()">edit</button>
                                                 </th>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">New
+                                                    message</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Name:</label>
+                                                        <input type="text" class="form-control" id="name"
+                                                            value="">
+                                                        <input type="hidden" class="form-control" id="id"
+                                                            value="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name"
+                                                            class="col-form-label">Unit_price:</label>
+                                                        <input type="text" class="form-control" id="unit_price"
+                                                            value="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">id_type:</label>
+                                                        <input type="text" class="form-control" id="id_type"
+                                                            value="">
+                                                    </div>
+
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button onclick="handleSubmit({{ $item->id }})" type="button"
+                                                    class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -108,5 +160,83 @@
                 });
 
         }
+
+        function createProduct() {
+            let name = $('#name').val()
+            let unit_price = $('#unit_price').val()
+            let id_type = $('#id_type').val()
+            $.ajax({
+                    method: "POST",
+                    url: "/api/product/create",
+                    data: {
+                        name,
+                        unit_price,
+                        id_type,
+                    }
+                })
+                .done(function(data) {
+                    $('tbody').children().remove();
+
+                    let str = ``;
+                    data.data.forEach(element => {
+                        let e = `<tr>
+                            <th>${element.id}</th>
+                            <th>${element.name}</th>
+                            <th>${element.id_type}</th>
+                            <th>${element.unit_prce}</th>
+                            <th><button onclick="deleUser(${element.id})">delete</button></th>
+                                      </tr>`;
+                        str = `${str}${e}`
+                    });
+                    $('tbody').append(str);
+
+                    $('#exampleModal').modal('hide')
+                });
+        }
+
+        function handleSubmit(id) {
+            // if (isCreate) {
+            createProduct();
+            // } else {
+            //     editUser(id);
+            // }
+        }
+        function delete(id) {
+
+            $.ajax({
+                method: "GET",
+                url: "/api/product/" + id
+            })
+            .done(function(data) {
+                alert("Data Saved: " + data.message);
+                $('tbody').children().remove();
+
+                let str = ``;
+                data.data.forEach(element => {
+                    let e = `<tr>
+                            <th>${element.name}</th>
+                            <th>${element.id_type}</th>
+                            <th>${element.unit_price}</th>
+                            <th><button onclick="deleUser(${element.id})">delete</button></th>
+                            <th><button onclick="edit(${element.id})">edit</button></th>
+                                    </tr>`;
+                    str = `${str}${e}`
+                });
+                $('tbody').append(str);
+        });
+
+    function editProduct(id) {
+            $.ajax({
+                    method: "GET",
+                    url: "/api/product/edit/" + id
+                })
+                .done(function(data) {
+                    $('#name').val(data.data.name)
+                    $('#phone').val(data.data.unit_price)
+                    $('#email').val(data.data.id_type)
+                });
+        }
+
+}
     </script>
 @endsection

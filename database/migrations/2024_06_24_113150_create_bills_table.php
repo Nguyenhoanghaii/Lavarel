@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bills', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_customer');
-            $table->date('date_order');
-            $table->float('total');
-            $table->string('payment');
-            $table->string('name');
-            $table->boolean('gender');
-            $table->string('email')->unique();
-            $table->string('phone');
-            $table->string('address');
-            $table->string('note');
-            $table->string('status');
-            $table->timestamps();
-        });
+        // Schema::create('bills', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('id_customer');
+        //     $table->date('date_order');
+        //     $table->float('total');
+        //     $table->string('payment');
+        //     $table->string('name');
+        //     $table->boolean('gender');
+        //     $table->string('email')->unique();
+        //     $table->string('phone');
+        //     $table->string('address');
+        //     $table->string('note');
+        //     $table->string('status');
+        //     $table->timestamps();
+        // });
     }
 
     /**
