@@ -24,28 +24,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test-login', function() {
+Route::get('/test-login', function () {
     $user = User::first();
 
     $user->token = $user->createToken("token")->accessToken;
     return response()->json($user);
 });
-Route::middleware('auth:api')->group(function() {
-    Route::get('/test-auth', function() {
+Route::middleware('auth:api')->group(function () {
+    Route::get('/test-auth', function () {
         $user = Auth::user();
         return response()->json($user);
     });
     Route::get('/product-with-pagination', [ProductController::class, 'products']);
-});
-
-Route::post('/create-payment-link', [CheckoutController::class, 'createPaymentLink']);
-
-Route::prefix('/payos')->group(function () {
-    Route::post('/create', [OrderController::class, 'createOrder']);
-    Route::get('/{id}', [OrderController::class, 'getPaymentLinkInfoOfOrder']);
-    Route::put('/{id}', [OrderController::class, 'cancelPaymentLinkOfOrder']);
-});
-
-Route::prefix('/payment')->group(function () {
-    Route::post('/payos', [PaymentController::class, 'handlePayOSWebhook']);
 });

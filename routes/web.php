@@ -33,11 +33,11 @@ Route::get('/product-type', [HomeController::class, 'productType']);
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
-Route::get('/tinhdoan', function() {
+Route::get('/tinhdoan', function () {
     return view();
 });
 
-Route::get('/test', function() {
+Route::get('/test', function () {
     $order = Order::find(2);
 
     dd($order->products);
@@ -56,7 +56,6 @@ Route::controller(CartController::class)->group(function () {
     Route::get('/add/{id}', 'add')->name('cart-add');
     Route::get('/remove/{id}', 'remove')->name('cart-remove');
     Route::get('/remove-all', 'removeAll')->name('cart-remove-all');
-
 });
 
 
@@ -100,16 +99,4 @@ Route::prefix('/admin')->middleware([CheckAdmin::class])->name('admin-')->group(
         Route::delete('/product-delete/{id}', 'delete')->name('product-delete');
     });
     // Route::get('/remove/{id}', 'remove')->name('cart-remove');
-});
-
-Route::post('/create-payment-link', [CheckoutController::class, 'createPaymentLink']);
-
-Route::prefix('/order')->group(function () {
-    Route::post('/create', [OrderController::class, 'createOrder']);
-    Route::get('/{id}', [OrderController::class, 'getPaymentLinkInfoOfOrder']);
-    Route::put('/{id}', [OrderController::class, 'cancelPaymentLinkOfOrder']);
-});
-
-Route::prefix('/payment')->group(function () {
-    Route::post('/payos', [PaymentController::class, 'handlePayOSWebhook']);
 });
