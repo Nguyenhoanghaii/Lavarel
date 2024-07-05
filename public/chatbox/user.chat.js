@@ -4,8 +4,8 @@ function makeid(length) {
     const charactersLength = characters.length;
     let counter = 0;
     while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
     }
     return result;
 }
@@ -17,12 +17,12 @@ console.log('userIdActive', newGuest);
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAs_-0Bv1A8fi1WtqsfB9cecFyH8fGZ8Xs",
-    authDomain: "shop-chat-2e080.firebaseapp.com",
-    projectId: "shop-chat-2e080",
-    storageBucket: "shop-chat-2e080.appspot.com",
-    messagingSenderId: "422478360130",
-    appId: "1:422478360130:web:f2cfd37d6bafb2723147db",
+    apiKey: "AIzaSyAhxtUhEnu5UNn3n6FsGKaNy5PINj7Mqxk",
+    authDomain: "chatbox-de2da.firebaseapp.com",
+    projectId: "chatbox-de2da",
+    storageBucket: "chatbox-de2da.appspot.com",
+    messagingSenderId: "750663331947",
+    appId: "1:750663331947:web:c77bef8d9b86a71300012e"
 };
 
 
@@ -35,12 +35,14 @@ const db = firebase.firestore();
 // Set up a real-time listener for changes in the "users" collection
 db.collection("message").onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {
+
         if (change.type === "added") {
+            console.log('change', change);
             refreshChat()
         }
-        // if (change.type === "modified") {
-        //     console.log("Modified user: ", change.doc.data());
-        // }
+        if (change.type === "modified") {
+            refreshChat()
+        }
         // if (change.type === "removed") {
         //     console.log("Removed user: ", change.doc.data());
         // }
@@ -50,14 +52,14 @@ db.collection("message").onSnapshot((snapshot) => {
 
 // Add Message
 async function addData() {
-    
+
     try {
         if (!isCreated) addUser();
         const docRef = await db.collection("message").add({
             user_id: newGuest,
             created_at: new Date(),
-            from_admin : false,
-            message : jQuery('#custom-chat').val()
+            from_admin: false,
+            message: jQuery('#custom-chat').val()
         });
         console.log("Document written with ID: ", docRef.id);
         jQuery('#custom-chat').val('');
@@ -69,10 +71,10 @@ async function addData() {
 // Add User
 async function addUser() {
     try {
-        const docRef = await db.collection("users").add({
+        const docRef = await db.collection("customer").add({
             user_id: newGuest,
             created_at: new Date(),
-            name : 'guest+' + newGuest,
+            name: 'guest+' + newGuest,
         });
         isCreated = true
         console.log("Document written with ID: ", docRef.id);
@@ -105,7 +107,7 @@ async function refreshChat() {
 
     let chats = await getDetail(newGuest)
     console.log('chats', chats);
-    
+
     let chat = ``;
     chats.forEach(e => {
         chat = `${chat}<li class="${e.data().from_admin ? 'self' : 'other'}"><span>P</span>${e.data().message}</li>`
@@ -116,7 +118,7 @@ async function refreshChat() {
 
 document.addEventListener("DOMContentLoaded", async (event) => {
     try {
-        refreshChat()
+        // refreshChat()
     } catch (e) {
         console.error("Error initializing Firebase: ", e);
     }

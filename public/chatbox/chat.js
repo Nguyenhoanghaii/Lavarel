@@ -7,12 +7,12 @@ let friends = {
     all: document.querySelectorAll(".left .person"),
     name: "",
 }
-    // chat = {
-    //     container: document.querySelector(".container .right"),
-    //     current: null,
-    //     person: null,
-    //     name: document.querySelector(".container .right .top .name"),
-    // };
+// chat = {
+//     container: document.querySelector(".container .right"),
+//     current: null,
+//     person: null,
+//     name: document.querySelector(".container .right .top .name"),
+// };
 
 friends.all.forEach((f) => {
     f.addEventListener("mousedown", () => {
@@ -21,12 +21,12 @@ friends.all.forEach((f) => {
 });
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAs_-0Bv1A8fi1WtqsfB9cecFyH8fGZ8Xs",
-    authDomain: "shop-chat-2e080.firebaseapp.com",
-    projectId: "shop-chat-2e080",
-    storageBucket: "shop-chat-2e080.appspot.com",
-    messagingSenderId: "422478360130",
-    appId: "1:422478360130:web:f2cfd37d6bafb2723147db",
+    apiKey: "AIzaSyAhxtUhEnu5UNn3n6FsGKaNy5PINj7Mqxk",
+    authDomain: "chatbox-de2da.firebaseapp.com",
+    projectId: "chatbox-de2da",
+    storageBucket: "chatbox-de2da.appspot.com",
+    messagingSenderId: "750663331947",
+    appId: "1:750663331947:web:c77bef8d9b86a71300012e"
 };
 
 
@@ -51,7 +51,7 @@ db.collection("message").onSnapshot((snapshot) => {
     });
 });
 
-db.collection("users").onSnapshot((snapshot) => {
+db.collection("customer").onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {
         refreshCustomer()
     });
@@ -64,8 +64,8 @@ async function addData() {
         const docRef = await db.collection("message").add({
             user_id: userIdActive,
             created_at: new Date(),
-            from_admin : true,
-            message : $('#admin-chat').val()
+            from_admin: true,
+            message: $('#admin-chat').val()
         });
         console.log("Document written with ID: ", docRef.id);
         $('#admin-chat').val('');
@@ -77,7 +77,7 @@ async function addData() {
 // Get Data
 async function getCustomers() {
     try {
-        const querySnapshot = await db.collection("users").get();
+        const querySnapshot = await db.collection("customer").get();
         let result = [];
         querySnapshot.forEach((doc) => {
             result.push(doc);
@@ -93,7 +93,7 @@ async function getCustomers() {
 // Update Data
 async function updateData() {
     const docId = prompt("Enter the document ID to update:");
-    const userRef = db.collection("users").doc(docId);
+    const userRef = db.collection("customer").doc(docId);
 
     try {
         await userRef.update({
@@ -109,7 +109,7 @@ async function updateData() {
 async function deleteData() {
     const docId = prompt("Enter the document ID to delete:");
     try {
-        await db.collection("users").doc(docId).delete();
+        await db.collection("customer").doc(docId).delete();
         console.log("Document successfully deleted!");
     } catch (e) {
         console.error("Error removing document: ", e);
@@ -139,6 +139,7 @@ async function refreshCustomer() {
 }
 
 async function getDetail(id) {
+    console.log(id);
     return db.collection("message").where("user_id", "==", id).orderBy('created_at')
         .get()
         .then((querySnapshot) => {
@@ -160,9 +161,15 @@ async function refreshChat(chats) {
     $('#content').children().remove();
     let chat = ``;
     chats.forEach(e => {
-        chat = `${chat}<div class="bubble ${e.data().from_admin ? 'me' : 'you'}">
+        chat = `${chat}
+                    <div>
+                    <div class="bubble ${e.data().from_admin ? 'me' : 'you'}">
                     ${e.data().message}
-                </div>`
+                    </div>
+                    <div>xóa</div>
+                    </div>
+                    `
+
     })
 
     $('#content').append(chat);
