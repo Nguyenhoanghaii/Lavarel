@@ -13,6 +13,7 @@ class UserController extends Controller
         return view('bread.pages.login');
     }
 
+    // help me generate refresh token in this function
     function postLogin(Request $request) {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -20,7 +21,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $token = Auth::user()->createToken("token")->accessToken;
+            $token = Auth::user()->createToken("token", [])->accessToken;
             Cookie::queue('api_token', $token, 60, null, null, false, false);
             $request->session()->regenerate();
 
