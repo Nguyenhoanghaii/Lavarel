@@ -48,11 +48,11 @@
 						</div>
 						<div class="form-block">
 							<label for="phone">Password*</label>
-							<input type="text" id="phone" name="password" required>
+							<input type="text" id="password" name="password" required>
 						</div>
 						<div class="form-block">
 							<label for="phone">Re password*</label>
-							<input type="text" id="phone" name="password" required>
+							<input type="text" id="password" name="password" required>
 						</div>
 						<div class="form-block">
 							<button type="submit" class="btn btn-primary">Register</button>
