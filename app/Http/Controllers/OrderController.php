@@ -21,12 +21,13 @@ class OrderController extends Controller
         $this->payOSChecksumKey = env("PAYOS_CHECKSUM_KEY");
     }
 
-    function create(Request $request) {
+    function create(Request $request)
+    {
         $carts = $request->cart ?? '[]';
         $carts = json_decode($carts, true);
         $order = Order::create($request->all());
 
-        if (count ($carts) > 0) {
+        if (count($carts) > 0) {
             $data = [];
             foreach ($carts as $cart) {
                 array_push($data, [
@@ -39,15 +40,55 @@ class OrderController extends Controller
             $cartDetail = OrderDetail::insert($data);
         }
         $request->session()->forget('cart');
-        return redirect()->route('home');
+
+        $url = $this->createPaymentLink($order->id, 2000);
+        return redirect($url);
     }
 
-    function detail($id) {
+    public function createPaymentLink($orderId, $amount)
+    {
+        $YOUR_DOMAIN = "http://localhost:8000/order/success/" . $orderId;
+        $data = [
+            "orderCode" => intval(substr(strval(microtime(true) * 10000), -6)),
+            "amount" => $amount,
+            "description" => "Thanh toán đơn hàng",
+            "returnUrl" => $YOUR_DOMAIN,
+            "cancelUrl" => $YOUR_DOMAIN . "/cancel.html"
+        ];
+        error_log($data['orderCode']);
+        $PAYOS_CLIENT_ID = env('PAYOS_CLIENT_ID');
+        $PAYOS_API_KEY = env('PAYOS_API_KEY');
+        $PAYOS_CHECKSUM_KEY = env('PAYOS_CHECKSUM_KEY');
+
+        $payOS = new PayOS($PAYOS_CLIENT_ID, $PAYOS_API_KEY, $PAYOS_CHECKSUM_KEY);
+        try {
+            $response = $payOS->createPaymentLink($data);
+            // \Log::debug('$response', [$response]);
+            return ($response['checkoutUrl']);
+            // $response = $payOS->getPaymentLinkInformation($data['orderCode']);
+            // return $response;
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
+    function success($id)
+    {
+        $order = Order::find($id);
+        $order->status = true;
+        $order->save();
+
+        return 'thanh toan thanh cong';
+    }
+
+    function detail($id)
+    {
         $orderDetails = OrderDetail::where('id_bill', $id)->with('product')->get();
         return response()->json($orderDetails, 200);
     }
 
-    function delete($id) {
+    function delete($id)
+    {
         $order = Order::find($id);
         $order->order_detail()->delete();
         $order->delete();

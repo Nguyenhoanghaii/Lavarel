@@ -59,4 +59,12 @@ class UserController extends Controller
 
         return redirect()->route('login');
     }
+    public function users() {
+        $users = User::paginate(1);
+
+        return response()->json([
+            'status' => true,
+            'data' => $users
+        ]);
+    }
 }

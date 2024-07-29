@@ -25,6 +25,12 @@
           <span class="menu-title">Order</span>
         </a>
       </li>
+      <li class="nav-item {{ $_SERVER['REQUEST_URI'] == "/chat" ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('chat') }}">
+          <i class="menu-icon mdi mdi-view-list"></i>
+          <span class="menu-title">Message</span>
+        </a>
+      </li>
       {{-- <li class="nav-item nav-category">UI Elements</li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

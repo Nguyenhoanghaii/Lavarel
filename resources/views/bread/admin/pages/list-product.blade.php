@@ -45,7 +45,7 @@
                         </div>
                         <div id="pagination">
 
-                        </div>
+                            </div>
                         {{-- <nav aria-label="Page navigation example" class="mt-3 d-flex justify-content-end">
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="?page={{ $products->currentPage() - 1 }}">Previous</a></li>

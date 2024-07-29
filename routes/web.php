@@ -63,6 +63,7 @@ Route::controller(OrderController::class)->prefix('order')->group(function () {
     Route::post('/create', 'create')->name('cart-checkout');
     Route::get('/detail/{id}', 'detail')->name('order-detail');
     Route::delete('/{id}', 'delete')->name('order-delete');
+    Route::get('/success/{id}', 'success')->name('order-success');
 });
 
 
@@ -79,7 +80,7 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(ChatController::class)->group(function () {
 
-    Route::get('/chat', 'index');
+    Route::get('/chat', 'index')->name('chat');
 });
 
 
