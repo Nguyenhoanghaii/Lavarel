@@ -31,7 +31,7 @@
                 </div>
                 <div class="pull-right auto-width-right">
                     <ul class="top-details menu-beta l-inline">
-                        <li><a href="#"><i class="fa fa-user"></i>
+                        <li><a href="{{route('admin.home')}}"><i class="fa fa-user"></i>
                         @if (Auth::check())
                             {{Auth::user()->full_name;}}
                             @else

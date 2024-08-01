@@ -17,7 +17,7 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        Log::debug('tinh da o day');
+        Log::debug('Hai da o day');
         if (Auth::check()) {
             if (Auth::user()->is_admin) {
                 return $next($request);

@@ -33,26 +33,26 @@
 
 						<div class="form-block">
 							<label for="your_last_name">Fullname*</label>
-							<input type="text" id="your_last_name" name="fullname" required>
+							<input type="text" id="your_last_name" name="fullname" required oninput="validateInput(this)">
 						</div>
 
 						<div class="form-block">
 							<label for="adress">Address*</label>
-							<input type="text" id="adress" value="Street Address" name="address" required>
+							<input type="text" id="adress" name="address" required oninput="addressInput(this)">
 						</div>
 
 
 						<div class="form-block">
 							<label for="phone">Phone*</label>
-							<input type="text" id="phone" name="phone" required>
+							<input type="text" id="phone" name="phone" required oninput="phoneInput(this)">
 						</div>
 						<div class="form-block">
-							<label for="phone">Password*</label>
-							<input type="text" id="password" name="password" required>
+							<label for="pass">Password*</label>
+							<input type="password" id="password" name="password" required pattern=".{8,}">
 						</div>
 						<div class="form-block">
-							<label for="phone">Re password*</label>
-							<input type="text" id="password" name="password" required>
+							<label for="pass">Re-password*</label>
+							<input type="password" id="repassword" name="password" required pattern=".{8,}">
 						</div>
 						<div class="form-block">
 							<button type="submit" class="btn btn-primary">Register</button>
@@ -84,6 +84,18 @@
 
 </script>
 <script>
+	function validateInput(inputField) {
+  // Loại bỏ tất cả các ký tự không phải chữ cái
+  inputField.value = inputField.value.replace(/[^a-zA-Z\s\u00C0-\u00FF]/g, '');
+	}
+	function addressInput(inputField) {
+  // Loại bỏ tất cả ký tự KHÔNG phải chữ cái, số và khoảng trắng
+  inputField.value = inputField.value.replace(/[^a-zA-Z0-9\s]/g, '');
+}
+	function phoneInput(inputField) {
+  // Loại bỏ tất cả ký tự không phải số
+  inputField.value = inputField.value.replace(/[^0-9]/g, '');
+}
 	 jQuery(document).ready(function($) {
                 'use strict';
 
